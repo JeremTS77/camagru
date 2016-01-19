@@ -1,0 +1,29 @@
+html, body {
+
+	height: 100%;
+    background-color: rgb(230, 230, 230);
+    font-family: 'Averia Sans Libre', cursive;
+    padding: 0px;
+    margin: 0px;
+}
+
+h1 {
+    color: rgb(230, 230, 230);
+    text-align: center;
+    padding-top: 20px;
+    margin: 0px;
+}
+
+.dat_header {
+    height: 100px;
+    width: 100%;
+    background-color: rgb(186, 99, 100);
+}
+
+.dat_footer {
+    position: absolute;
+    bottom: 0px;
+    height: 100px;
+    width: 100%;
+    background-color: rgb(186, 99, 100);
+}
