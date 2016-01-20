@@ -2,7 +2,7 @@
 	<head>
 	<meta charset="utf-8" />
 		<title>CAMAGRU</title>
-		<link rel="stylesheet" type="text/css" href="camagru.css" media="all"/>
+		<link rel="stylesheet" type="text/css" href="../css/camagru.css" media="all"/>
 		<link href='https://fonts.googleapis.com/css?family=Averia+Sans+Libre' rel='stylesheet' type='text/css'>
 	</head>
 	<body>
@@ -12,17 +12,14 @@
 					<h1>CAMAGRU</h1>
 				</div>
 			</div>
-			
 		</header>
 		<div class="picture">
 			<h1>Take a picture</h1>
 		</div>
-		<script src="take_picture.js"></script>
+		<script src="../scripts/take_picture.js"></script>
 	</body>
-
 	<footer>
 		<div class="dat_footer">
-			
 		</div>
 	</footer>
 </html>
