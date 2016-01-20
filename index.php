@@ -6,7 +6,7 @@ session_start();
 	<head>
 	<meta charset="utf-8" />
 		<title>CAMAGRU</title>
-		<link rel="stylesheet" type="text/css" href="css/camagru.css" media="all"/>
+		<link rel="stylesheet" type="text/css" href="client/css/camagru.css" media="all"/>
 		<link href='https://fonts.googleapis.com/css?family=Averia+Sans+Libre' rel='stylesheet' type='text/css'>
 	</head>
 
@@ -20,11 +20,11 @@ session_start();
 
 		</header>
 		<div class="picture">
-			<a href="take_picture.php">Take a picture</a>
+			<a href="client/views/take_picture.php">Take a picture</a>
 		</div>
 		<div class= "form">
 			<section class="loginform cf">
-			<form name="login" action="../server/login.php" method="post" accept-charset="utf-8">
+			<form name="login" action="/server/login.php" method="post" accept-charset="utf-8">
 				<div class="email">
 					<label for="usermail">Login</label>
 					<input name="login" placeholder="Login" required>
@@ -41,7 +41,7 @@ session_start();
 		</div>
 
 
-		<script src="scripts/take_picture.js"></script>
+		<script src="client/scripts/take_picture.js"></script>
 	</body>
 
 	<footer>
