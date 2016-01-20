@@ -8,6 +8,4 @@ else{
 	echo "Je vous emmene vous connecter".PHP_EOL;
 	print("<script type=\"text/javascript\">setTimeout('location=(\"index.php\")' ,1000);</script>");
 }
-
-
 ?>

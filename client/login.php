@@ -6,7 +6,7 @@ if (!isset($_POST['login'])){
 }
 else{
 	try{
-		$pdo = new PDO('mysql:host=127.0.0.1;dbname=camagru','root', '');
+		$pdo = new PDO('mysql:host=127.0.0.1;dbname=camagru','root', ''); //add your mysql password here
 
 		$login	= htmlspecialchars($_POST['login']);
 		$mdp	= htmlspecialchars(hash('whirlpool', $_POST['password']));
