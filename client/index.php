@@ -7,6 +7,7 @@ session_start();
 		<title>camagru</title>
 	</head>
 	<body>
+<!-- Nique le css -->
 		<form action="login.php" method="post">
 			<input placeholder="login" name="login" type="text"/>
 			<input placeholder="password" name="password" type="password"/>
