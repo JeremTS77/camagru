@@ -1,1 +1,0 @@
-http://fmaz.developpez.com/tutoriels/php/comprendre-pdo/#LIII.a
