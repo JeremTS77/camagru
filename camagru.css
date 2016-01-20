@@ -7,13 +7,22 @@ html, body {
     margin: 0px;
 }
 
-h1 {
+/*h1 {
     color: rgb(230, 230, 230);
     text-align: center;
     padding-top: 20px;
     margin: 0px;
+}*/
+
+.title_project {
+	text-align: center;
 }
 
+.title_project h1 {
+	color: rgb(230, 230, 230);
+   /* padding-left: 433px;*/
+    padding-top: 20px;
+}
 .dat_header {
     height: 100px;
     width: 100%;
@@ -28,6 +37,15 @@ h1 {
     background-color: rgb(186, 99, 100);
 }
 
+.picture {
+	width: 100%;
+	text-align: center;
+}
+
+.picture a {
+	color: rgb(186, 99, 100);
+	text-decoration: none;
+}
 form {
     width: 220px;
     margin-left: 420px;

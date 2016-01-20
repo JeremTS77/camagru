@@ -9,10 +9,15 @@
 	<body>
 		<header>
 			<div class="dat_header">
-				<h1>CAMAGRU</h1>
+				<div class="title_project">
+					<h1>CAMAGRU</h1>
+				</div>
 			</div>
+			
 		</header>
-
+		<div class="picture">
+			<a href="take_picture.php">Take a picture</a>
+		</div>
 		<div class= "form">
 			<section class="loginform cf">
 			<form name="login" action="index_submit" method="post" accept-charset="utf-8">
@@ -31,6 +36,8 @@
 			</section>
 		</div>
 
+		
+		<script src="take_picture.js"></script>
 	</body>
 
 	<footer>
