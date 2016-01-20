@@ -6,13 +6,17 @@ if (!isset($_POST['login'])){
 }
 else{
 	try{
-		$pdo = new PDO('mysql:host=127.0.0.1;dbname=camagru','root', '');
+		$pdo = new PDO('mysql:host=127.0.0.1;dbname=camagru','root', 'camagru');
 
 		$login	= htmlspecialchars($_POST['login']);
 		$mdp	= htmlspecialchars(hash('whirlpool', $_POST['password']));
 		$query = "SELECT mdp FROM users where login='$login';";
 		$arr = $pdo->query($query)->fetch();
-<<<<<<< HEAD
+	}
+}
+?>
+
+<!-- <<<<<<< HEAD
 		//	var_dump($arr);
 =======
 >>>>>>> 5ee55f9e428bbf41740d3418131613837b989de1
@@ -35,4 +39,5 @@ else{
 		die($msg);
 	}
 }
-?>
+
+ -->
