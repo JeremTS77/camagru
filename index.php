@@ -1,12 +1,17 @@
 <?php
 session_start();
+if (!isset($_SESSION['login'])){
+	header('Location: /client/views/signin.php');
+	exit;
+}
+else{
 ?>
 <!DOCTYPE HTML5>
 <html>
 	<head>
 	<meta charset="utf-8" />
 		<title>CAMAGRU</title>
-		<link rel="stylesheet" type="text/css" href="client/css/camagru.css" media="all"/>
+		<link rel="stylesheet" type="text/css" href="/client/css/camagru.css" media="all"/>
 		<link href='https://fonts.googleapis.com/css?family=Averia+Sans+Libre' rel='stylesheet' type='text/css'>
 	</head>
 
@@ -16,32 +21,18 @@ session_start();
 				<div class="title_project">
 					<h1>CAMAGRU</h1>
 				</div>
+				<div class="logout_button">
+					<a href="/server/logout.php">Logout</a>
+				</div>
 			</div>
 
 		</header>
 		<div class="picture">
-			<a href="client/views/take_picture.php">Take a picture</a>
-		</div>
-		<div class= "form">
-			<section class="loginform cf">
-			<form name="login" action="/server/login.php" method="post" accept-charset="utf-8">
-				<div class="email">
-					<label for="usermail">Login</label>
-					<input name="login" placeholder="Login" required>
-				</div>
-
-				<div class="password">
-					<label for="password">Password</label>
-					<input type="password" name="password" placeholder="password" required>
-				</div>
-
-				<input type="submit" value="Login">
-			</form>
-			</section>
+			<a href="/client/views/take_picture.php">Take a picture</a>
 		</div>
 
 
-		<script src="client/scripts/take_picture.js"></script>
+		<script src="/client/scripts/take_picture.js"></script>
 	</body>
 
 	<footer>
@@ -49,4 +40,7 @@ session_start();
 
 		</div>
 	</footer>
-<html>
+</html>
+<?php
+}
+?>

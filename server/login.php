@@ -2,7 +2,8 @@
 session_start();
 unset($_SESSION['login']);
 if (!isset($_POST['login'])){
-	print_r("Connectez-vous");
+	header('Location: /client/views/signin.php');
+	exit;
 }
 else{
 	try{
@@ -12,11 +13,14 @@ else{
 		$query = "SELECT mdp FROM users where login='$login';";
 		$arr = $pdo->query($query)->fetch();
 		if ($arr["mdp"] == $mdp){
-			echo "All is good".PHP_EOL;
+			usleep(5);
 			$_SESSION['login']=$login;
+			header('Location: /');
+			exit;
 		}
 		else{
-			echo "Hum something is bad".PHP_EOL;
+			header('Location: /client/views/signin.php');
+			exit;
 		}
 		$pdo = null;
 	}
