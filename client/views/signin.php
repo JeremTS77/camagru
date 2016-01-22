@@ -1,6 +1,5 @@
 <?php
 session_start();
-unset($_SESSION['login']);
 if (!isset($_SESSION['login'])){
 ?>
 <!DOCTYPE HTML5>
@@ -23,6 +22,8 @@ if (!isset($_SESSION['login'])){
 		</header>
 
 
+		<h2 class="PageTitle">Sign In</h2>
+
 		<div class= "form">
 			<section class="loginform cf">
 			<form name="login" action="/server/login.php" method="post" accept-charset="utf-8">
@@ -41,18 +42,18 @@ if (!isset($_SESSION['login'])){
 			</section>
 		</div>
 		<div>
-			<a href="/client/views/siginup.php">Create your account</a>
+			<a href="/client/views/signup.php">Create your account</a>
 		</div>
 
-
-		<script src="client/scripts/take_picture.js"></script>
-	</body>
 
 	<footer>
 		<div class="dat_footer">
 
 		</div>
 	</footer>
+
+		<script src="/client/scripts/take_picture.js"></script>
+	</body>
 <html>
 <?php
 }

@@ -18,40 +18,45 @@ if (!isset($_SESSION['login'])){
 					<h1>CAMAGRU</h1>
 				</div>
 			</div>
-
 		</header>
 
+		<h2 class="PageTitle">Sign Up</h2>
 
 		<div class= "form">
 			<section class="loginform cf">
 			<form name="login" action="/server/register.php" method="post" accept-charset="utf-8">
 				<div class="email">
-					<label for="usermail">Login</label>
+					<label for="login">Login</label>
 					<input name="login" placeholder="Login" required>
 				</div>
-
+				<div class="email">
+					<label for="email">Email</label>
+					<input name="email" type="email" placeholder="email" required>
+				</div>
 				<div class="password">
 					<label for="password">Password</label>
-					<input type="password" name="password" placeholder="password" required>
+					<input id="normalpass" type="password" name="password" placeholder="password" onkeyup="verifpass();" required>
+				</div>
+				<div class="password">
+					<label for="confpassword">Confirm</label>
+					<input id="repeatpass" type="password" name="confpassword" placeholder="repeat password" onkeyup="verifpass();" required>
 				</div>
 
-				<input type="submit" value="Login">
+				<input type="submit" value="Login" id="SignupButton" disabled/>
 			</form>
 			</section>
 		</div>
 		<div>
-			<a href="/client/views/siginup.php">Create your account</a>
+			<a href="/client/views/signin.php">Already register ?</a>
 		</div>
 
-
-		<script src="client/scripts/take_picture.js"></script>
-	</body>
 
 	<footer>
 		<div class="dat_footer">
-
 		</div>
 	</footer>
+	<script src="/client/scripts/verifypass.js"></script>
+	</body>
 <html>
 <?php
 }

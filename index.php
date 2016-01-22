@@ -15,7 +15,7 @@ else{
 		<link href='https://fonts.googleapis.com/css?family=Averia+Sans+Libre' rel='stylesheet' type='text/css'>
 	</head>
 
-	<body>
+<body onload="init();">
 		<header>
 			<div class="dat_header">
 				<div class="title_project">
@@ -27,19 +27,21 @@ else{
 			</div>
 
 		</header>
-		<div class="picture">
-			<a href="/client/views/take_picture.php">Take a picture</a>
-		</div>
 
+		<h2 class="PageTitle">Take Picture</h2>
+
+
+		<video id="video" class="VideoRendu"></video>
+		<button onclick="takepicture();"></button>
 
 		<script src="/client/scripts/take_picture.js"></script>
-	</body>
 
 	<footer>
 		<div class="dat_footer">
 
 		</div>
 	</footer>
+	</body>
 </html>
 <?php
 }

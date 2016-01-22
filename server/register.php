@@ -7,7 +7,7 @@ if (!isset($_SESSION['login'])){
 		$mdp	= htmlspecialchars(hash('whirlpool', $_POST['password']));
 		$email =  htmlspecialchars($_POST['email']);
 		$query = "INSERT INTO users(login, email, mdp)  VALUES('$login', '$email', '$mdp');";
-		$pdo->querry($query);
+		$pdo->exec($query);
 		$pdo = null;
 	}
 	catch(PDOException $e){
