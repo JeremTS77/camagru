@@ -1,6 +1,56 @@
 <?php
 session_start();
-if (!isset($_SESSION['login'])){
+if(!isset($_SESSION['login'])){
+	if(isset($_GET['reset'])){
+?>
+<!DOCTYPE HTML5>
+<html>
+	<head>
+	<meta charset="utf-8" />
+		<title>CAMAGRU</title>
+		<link rel="stylesheet" type="text/css" href="/client/css/camagru.css" media="all"/>
+		<link href='https://fonts.googleapis.com/css?family=Averia+Sans+Libre' rel='stylesheet' type='text/css'>
+	</head>
+
+	<body>
+		<header>
+			<div class="dat_header">
+				<div class="title_project">
+					<h1>CAMAGRU</h1>
+				</div>
+			</div>
+
+		</header>
+
+		<h2 class="PageTitle">Reset Password</h2>
+
+		<form name="resetlast" action="/server/resetpassword.php" method="post" accept-charset="utf-8">
+			<input name="reset" value="<?php echo $_GET['reset']; ?>"/>
+			<div class="password">
+				<label for="password">Password</label>
+				<input id="normalpass" type="password" name="password" placeholder="password" onkeyup="verifpass();" required>
+			</div>
+			<div class="password">
+				<label for="confpassword">Confirm</label>
+				<input id="repeatpass" type="password" name="confpassword" placeholder="repeat password" onkeyup="verifpass();" required>
+			</div>
+			<input type="submit" value="Login" id="SignupButton" disabled/>
+		</form>
+
+		<div>
+			<a href="/client/views/signin.php">Already register ?</a>
+		</div>
+	<footer>
+		<div class="dat_footer">
+		</div>
+	</footer>
+	<script src="/client/scripts/verifypass.js"></script>
+	</body>
+<html>
+
+<?php
+	}
+	else{
 ?>
 <!DOCTYPE HTML5>
 <html>
@@ -30,6 +80,7 @@ if (!isset($_SESSION['login'])){
 					<label for="email">Email</label>
 					<input name="email" type="email" placeholder="email" required>
 				</div>
+				<button type="Submit">reset password</button>
 
 				</form>
 			</section>
@@ -45,6 +96,7 @@ if (!isset($_SESSION['login'])){
 	</body>
 <html>
 <?php
+	}
 }
 else{
 	echo 'All ready login'.PHP_EOL;
