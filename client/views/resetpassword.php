@@ -21,39 +21,27 @@ if (!isset($_SESSION['login'])){
 
 		</header>
 
-
-		<h2 class="PageTitle">Sign In</h2>
+		<h2 class="PageTitle">Reset Password</h2>
 
 		<div class= "form">
 			<section class="loginform cf">
-			<form name="login" action="/server/login.php" method="post" accept-charset="utf-8">
+			<form name="reset" action="/server/resetpassword.php" method="post" accept-charset="utf-8">
 				<div class="email">
-					<label for="usermail">Login</label>
-					<input name="login" placeholder="Login" required>
+					<label for="email">Email</label>
+					<input name="email" type="email" placeholder="email" required>
 				</div>
 
-				<div class="password">
-					<label for="password">Password</label>
-					<input type="password" name="password" placeholder="password" required>
-				</div>
-
-				<input type="submit" value="Login">
-			</form>
-			<a href="/client/views/resetpassword.php">Forgotten password ?</a>
+				</form>
 			</section>
 		</div>
+
 		<div>
-			<a href="/client/views/signup.php">Create your account</a>
+			<a href="/client/views/signin.php">Already register ?</a>
 		</div>
-
-
 	<footer>
 		<div class="dat_footer">
-
 		</div>
 	</footer>
-
-		<script src="/client/scripts/take_picture.js"></script>
 	</body>
 <html>
 <?php

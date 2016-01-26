@@ -44,9 +44,8 @@ var init = function(){
     canvas.height = height;
     canvas.getContext('2d').drawImage(video, 0, 0, width, height);
     var data = canvas.toDataURL('image/jpeg');
-    photo.setAttribute('src', data);
-    document.getElementById('test').value = data;
-    document.getElementById("canard").submit();
+    canvas.setAttribute('src', data);
+	document.getElementById('toto').value = data;
   }
   startbutton.addEventListener('click', function(ev){
       takepicture();

@@ -31,11 +31,15 @@ else{
 		<h2 class="PageTitle">Take Picture</h2>
 
 
-		<video id="video" class="VideoRendu"></video>
-		<button onclick="takepicture();"></button>
+		<video id="video" class="VideoRendu" autoplay></video>
+		<button id="startbutton">Take Picture</button>
+		<canvas id="canvas"></canvas>
+		<form>
+			<input  name="image" id="toto"/>
+			<input 	name="login" value="<?php echo $_SESSION['login']?>"/>
+		</form>
 
 		<script src="/client/scripts/take_picture.js"></script>
-
 	<footer>
 		<div class="dat_footer">
 
