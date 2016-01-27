@@ -2,30 +2,28 @@
 include '../config/database.php';
 session_start();
 if (!isset($_SESSION['login'])){
+	try
+	{
+		$DB_DSNNAME = $DB_DSN.";dbname=".$DB_NAME;
+		$pdo = new PDO($DB_DSNNAME , $DB_USER, $DB_PASSWORD);
+	}
+	catch(PDOException $e)
+	{
+		die("DB ERROR: ". $e->getMessage());
+	}
+
 	if (isset($_POST['reset'])){
-		try
-		{
-			$DB_DSNNAME = $DB_DSN.";dbname=".$DB_NAME;
-			$pdo = new PDO($DB_DSNNAME , $DB_USER, $DB_PASSWORD);
-		}
-		catch(PDOException $e)
-		{
-			die("DB ERROR: ". $e->getMessage());
-		}
 		$mdp	= htmlspecialchars(hash('whirlpool', $_POST['password']));
 		$salt = $_POST['reset'];
-		$querry = "UPDATE users SET mdp='$mdp' where reset='$salt';";
+		$querry = "UPDATE " . $DB_TABLE['users']." SET mdp='$mdp' where reset='$salt';";
+		$pdo->exec($querry);
+		$querry = "select login from ".$DB_TABLE['users']." where reset='$salt';";
+		$array = $pdo->query($querry)->fetch();
+		$_SESSION['login']=$array['login'];
+		$querry = "UPDATE ".$DB_TABLE['users']." SET reset=NULL where reset='$salt';";
+		$pdo->exec($querry);
 	}
 	else{
-		try
-		{
-			$DB_DSNNAME = $DB_DSN.";dbname=".$DB_NAME;
-			$pdo = new PDO($DB_DSNNAME , $DB_USER, $DB_PASSWORD);
-		}
-		catch(PDOException $e)
-		{
-			die("DB ERROR: ". $e->getMessage());
-		}
 		$email = htmlspecialchars($_POST['email']);
 		$headers = 'From: Admin<admin@camagru.42.fr>' . "\r\n" .
 			'Reply-To: <admin@camagru.42.fr>' . "\r\n" .
@@ -42,15 +40,11 @@ if (!isset($_SESSION['login'])){
 
 		mail($email, "Reset Password", $msg, $headers);
 
-		$querry = "UPDATE users SET reset='$yolohash' where email='$email';";
+		$querry = "UPDATE ".$DB_TABLE['users']." SET reset='$yolohash' where email='$email';";
 		$pdo->exec($querry);
-
-		header('Location: /');
-		exit;
 	}
+	$pdo = NULL;
 }
-else{
-	header('Location: /');
-	exit;
-}
+header('Location: /');
+exit;
 ?>

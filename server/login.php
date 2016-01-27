@@ -1,32 +1,27 @@
 <?php
+include '../config/database.php';
 session_start();
 unset($_SESSION['login']);
-if (!isset($_POST['login'])){
-	header('Location: /client/views/signin.php');
-	exit;
-}
-else{
+if (isset($_POST['login'])){
 	try{
-		$pdo = new PDO('mysql:host=127.0.0.1;dbname=camagru','root', 'camagru'); //add your mysql password here
-		$login	= htmlspecialchars($_POST['login']);
-		$mdp	= htmlspecialchars(hash('whirlpool', $_POST['password']));
-		$query = "SELECT mdp FROM users where login='$login';";
-		$arr = $pdo->query($query)->fetch();
-		if ($arr["mdp"] == $mdp){
-			usleep(5);
-			$_SESSION['login']=$login;
-			header('Location: /');
-			exit;
-		}
-		else{
-			header('Location: /client/views/signin.php');
-			exit;
-		}
-		$pdo = null;
+		$DB_DSNNAME = $DB_DSN.";dbname=".$DB_NAME;
+		$pdo = new PDO($DB_DSNNAME , $DB_USER, $DB_PASSWORD);
 	}
 	catch(PDOException $e){
 		$msg = 'ERREUR PDO dans ' . $e->getFile() . ' L.' . $e->getLine() . ' : ' . $e->getMessage();
 		die($msg);
 	}
+	$login	= htmlspecialchars($_POST['login']);
+	$mdp	= htmlspecialchars(hash('whirlpool', $_POST['password']));
+	$query = "SELECT mdp FROM ".$DB_TABLE['users']." where login='$login' and confirmed='1';";
+	$arr = $pdo->query($query)->fetch();
+	if ($arr["mdp"] == $mdp){
+		usleep(5);
+		$_SESSION['login']=$login;
+	}
+	$pdo = null;
+
 }
+header('Location: /');
+exit;
 ?>
