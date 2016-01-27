@@ -12,7 +12,9 @@ if (!isset($_SESSION['login'])){
 		die($msg);
 	}
 	if (isset($_GET['confirm'])){
-		$querry = "UPDATE ".$DB_TABLE['users']." SET confirm=NULL AND confirmed='1' where confirm='".$_GET['confirm']."';";
+		$querry = "UPDATE ".$DB_TABLE['users']." SET confirmed='1' where confirm='".$_GET['confirm']."';";
+		$pdo->exec($querry);
+		$querry = "UPDATE ".$DB_TABLE['users']." SET confirm=NULL  where confirm='".$_GET['confirm']."';";
 		$pdo->exec($querry);
 	}
 	else{
