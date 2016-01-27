@@ -46,6 +46,7 @@ var init = function(){
     var data = canvas.toDataURL('image/jpeg');
     canvas.setAttribute('src', data);
 	document.getElementById('toto').value = data;
+	document.forms['uploadphoto'].submit();
   }
   startbutton.addEventListener('click', function(ev){
       takepicture();
