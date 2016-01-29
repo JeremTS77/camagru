@@ -16,11 +16,12 @@ if (isset($_SESSION['login'])){
 		<header>
 			<h1>CAMAGRU</h1>
 			<nav>
+			<a href="/">Home</a>
 			<a href="/server/logout.php">Logout</a>
 			</nav>
+			<h2>Galerie</h2>
 		</header>
 
-		<h2 class="PageTitle">Galerie</h2>
 
 <div class="galerie">
 <?php 
@@ -32,13 +33,13 @@ if (isset($_SESSION['login'])){
 		$msg = 'ERREUR PDO dans ' . $e->getFile() . ' L.' . $e->getLine() . ' : ' . $e->getMessage();
 		die($msg);
 	}
-	$querry = "SELECT link FROM ".$DB_TABLE['pictures'].";";
+	$querry = "SELECT link  FROM ".$DB_TABLE['pictures']." ORDER BY creation;";
 	$arr = $pdo->query($querry)->fetchAll();
 	if (isset($arr)){
 		$max = sizeof($arr);
-		for($i = 0; $i <= $max; $i++){
+		for($i = 0; $i < $max; $i++){
 ?>
-<img src="<?php echo $arr[$i]['link'];?>"/>
+<img class="GalerieImg" src="<?php echo $arr[$i]['link'];?>"/>
 <?php
 		}
 	}

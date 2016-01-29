@@ -6,15 +6,19 @@ html, body {
 	margin: 0px;
 }
 .VideoRendu{
-	height : 40%;
-	width : 55%;
+	min-height : 562px;
+	min-width : 750px;
 	max-height : 900px;
 	max-width: 900px;
 	margin-left:25%;
+	margin-top: 100px;
 }
 .title_project h1 {
 	color: rgb(230, 230, 230);
 	padding-top: 20px;
+}
+.PageTitle{
+	margin-left:15%;
 }
 header{
 	background:#34495e;
@@ -26,6 +30,10 @@ header h1{
 	color : white;
 	line-height : 70px;
 	font-size : 70px;
+}
+header h2{
+	color:white;
+	margin-left:15%;
 }
 header nav{
 	float:right;
@@ -60,22 +68,53 @@ footer h5{
 	color: rgb(186, 99, 100);
 	text-decoration: none;
 }
-form {
-	width: 220px;
-	margin-left: 420px;
-	margin-top: 350px;
-	height: 500px;
-}
 .myphoto{
-	width : 30% !important;
 	max-width:770px;
 	max-height : 75% !important;
 	overflow : auto;
 	float : right;
-
+	margin-top: 20px;
 }
 .galerie{
 	max-height : 80%; !important;
-	overflow :auto;
 	width : 100%;
+	overflow :auto;
+}
+.input {
+	text-align : center;
+}
+.input label{
+	border-radius : 10px;
+	background:#34495e;
+	line-height : 30px;
+	margin-top : 25px;
+	margin-bottom : 5px;
+	display : block;
+	margin-left:25%;
+	width : 50%;
+	height : 35px;
+	color : white;
+}
+.input input{
+	height : 35px;
+	width : 50%;
+}
+.FormButton{
+	margin-top : 25px;
+	margin-left:25%;
+	width : 50%;
+	height : 35px;
+	font-size:20px;
+	color : white;
+	background:#34495e;
+	border:none;
+}
+.GalerieImg{
+	margin-left : 10px;
+}
+@media screen and (max-width: 700px){
+	.GalerieImg{
+		height:60%;
+		width:100%;
+	}
 }

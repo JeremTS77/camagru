@@ -23,9 +23,9 @@ else{
 			<a href="/client/views/galerie.php">Galerie</a>
 			<a href="/server/logout.php">Logout</a>
 			</nav>
+			<h2>Take Picture</h2>
 		</header>
 
-		<h2 class="PageTitle">Take Picture</h2>
 
 		<video id="video" class="VideoRendu" autoplay></video>
 		<button id="startbutton">Take Picture</button>
@@ -48,7 +48,7 @@ else{
 	$arr = $pdo->query($querry)->fetchAll();
 	if (isset($arr)){
 		$max = sizeof($arr);
-		for($i = 0; $i <= $max; $i++){
+		for($i = 0; $i < $max; $i++){
 ?>
 <img src="<?php echo $arr[$i]['link'];?>"/>
 <?php

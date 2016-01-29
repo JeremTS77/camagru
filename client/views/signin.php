@@ -23,27 +23,24 @@ if (!isset($_SESSION['login'])){
 		<h2 class="PageTitle">Sign In</h2>
 
 		<div class= "form">
-			<section class="loginform cf">
 			<form name="login" action="/server/login.php" method="post" accept-charset="utf-8">
-				<div class="email">
+				<div class="input">
 					<label for="usermail">Login</label>
 					<input name="login" placeholder="Login" required>
 				</div>
 
-				<div class="password">
+				<div class="input">
 					<label for="password">Password</label>
 					<input type="password" name="password" placeholder="password" required>
 				</div>
 
-				<input type="submit" value="Login">
+				<button type="submit" class="FormButton">Login</button>
 			</form>
-			</section>
-		</div>
-		<div>
 		</div>
 
 
 	<footer>
+		<h5>Created By : Jeremy LA @ 42</h5>
 	</footer>
 
 		<script src="/client/scripts/take_picture.js"></script>
