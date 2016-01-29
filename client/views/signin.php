@@ -12,6 +12,14 @@ if (!isset($_SESSION['login'])){
 	</head>
 
 	<body>
+		<header>
+			<h1>CAMAGRU</h1>
+			<nav>
+			<a href="/client/views/resetpassword.php">Forgotten password ?</a>
+			<a href="/client/views/signup.php">Create your account</a>
+			</nav>
+		</header>
+
 		<h2 class="PageTitle">Sign In</h2>
 
 		<div class= "form">
@@ -29,11 +37,9 @@ if (!isset($_SESSION['login'])){
 
 				<input type="submit" value="Login">
 			</form>
-			<a href="/client/views/resetpassword.php">Forgotten password ?</a>
 			</section>
 		</div>
 		<div>
-			<a href="/client/views/signup.php">Create your account</a>
 		</div>
 
 
