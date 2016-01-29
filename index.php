@@ -29,7 +29,7 @@ else{
 
 		<video id="video" class="VideoRendu" autoplay></video>
 		<button id="startbutton">Take Picture</button>
-		<canvas id="canvas"></canvas>
+		<canvas hidden id="canvas"></canvas>
 		<form action="/server/recpicture.php" name="uploadphoto" method="post" hidden>
 			<input name="image" id="toto" hidden/>
 			<input name="login" value="<?php echo $_SESSION['login']?>" hidden/>
