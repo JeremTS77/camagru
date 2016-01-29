@@ -12,16 +12,6 @@ if (!isset($_SESSION['login'])){
 	</head>
 
 	<body>
-		<header>
-			<div class="dat_header">
-				<div class="title_project">
-					<h1>CAMAGRU</h1>
-				</div>
-			</div>
-
-		</header>
-
-
 		<h2 class="PageTitle">Sign In</h2>
 
 		<div class= "form">
@@ -48,9 +38,6 @@ if (!isset($_SESSION['login'])){
 
 
 	<footer>
-		<div class="dat_footer">
-
-		</div>
 	</footer>
 
 		<script src="/client/scripts/take_picture.js"></script>

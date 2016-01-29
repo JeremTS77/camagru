@@ -6,7 +6,7 @@ var init = function(){
       photo        = document.querySelector('#photo'),
       startbutton  = document.querySelector('#startbutton'),
       width = 750,
-      height = 0;
+      height = 500;
   navigator.getMedia = ( navigator.getUserMedia ||
                          navigator.webkitGetUserMedia ||
                          navigator.mozGetUserMedia ||
