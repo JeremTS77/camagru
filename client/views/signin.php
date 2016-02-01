@@ -26,7 +26,7 @@ if (!isset($_SESSION['login'])){
 			<form name="login" action="/server/login.php" method="post" accept-charset="utf-8">
 				<div class="input">
 					<label for="usermail">Login</label>
-					<input name="login" placeholder="Login" required>
+					<input name="login" placeholder="Login" required autofocus>
 				</div>
 
 				<div class="input">

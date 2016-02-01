@@ -65,16 +65,14 @@ if(!isset($_SESSION['login'])){
 		<h2 class="PageTitle">Reset Password</h2>
 
 		<div class= "form">
-			<section class="loginform cf">
 			<form name="reset" action="/server/resetpassword.php" method="post" accept-charset="utf-8">
-				<div class="email">
+				<div class="input">
 					<label for="email">Email</label>
-					<input name="email" type="email" placeholder="email" required>
+					<input name="email" type="email" placeholder="email" required autofocus>
 				</div>
-				<button type="Submit">reset password</button>
+				<button type="Submit" class="FormButton">reset password</button>
 
 				</form>
-			</section>
 		</div>
 
 	<footer>

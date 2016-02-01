@@ -15,7 +15,7 @@ if (!isset($_SESSION['login'])){
 		<header>
 			<h1>CAMAGRU</h1>
 			<nav>
-			<a href="/client/views/resetpassword.php">Forgotten password ?</a>
+			<a href="/client/views/signin.php">Already register ?</a>
 			<a href="/client/views/signup.php">Create your account</a>
 			</nav>
 		</header>
@@ -25,7 +25,7 @@ if (!isset($_SESSION['login'])){
 			<form name="login" action="/server/register.php" method="post" accept-charset="utf-8">
 				<div class="input">
 					<label for="login">Login</label>
-					<input name="login" placeholder="Login" required>
+					<input name="login" placeholder="Login" required autofocus>
 				</div>
 				<div class="input">
 					<label for="email">Email</label>
@@ -35,19 +35,15 @@ if (!isset($_SESSION['login'])){
 					<label for="password">Password</label>
 					<input id="normalpass" type="password" name="password" placeholder="password" onkeyup="verifpass();" required>
 				</div>
-				<div class="password">
-					<label for="confpassword">Confirm</label>
+				<div class="input">
+					<label for="confpassword">Confirm Password</label>
 					<input id="repeatpass" type="password" name="confpassword" placeholder="repeat password" onkeyup="verifpass();" required>
 				</div>
 
-				<input type="submit" value="Login" id="SignupButton" disabled/>
+				<button type="submit" value="Login" id="SignupButton" disabled  class="FormButton">Login</button>
 			</form>
 			</section>
 		</div>
-		<div>
-			<a href="/client/views/signin.php">Already register ?</a>
-		</div>
-
 
 	<footer>
 		<h5>Created By : Jeremy LA @ 42</h5>
