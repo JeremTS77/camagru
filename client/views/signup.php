@@ -12,21 +12,26 @@ if (!isset($_SESSION['login'])){
 	</head>
 
 	<body>
-
+		<header>
+			<h1>CAMAGRU</h1>
+			<nav>
+			<a href="/client/views/resetpassword.php">Forgotten password ?</a>
+			<a href="/client/views/signup.php">Create your account</a>
+			</nav>
+		</header>
 		<h2 class="PageTitle">Sign Up</h2>
 
 		<div class= "form">
-			<section class="loginform cf">
 			<form name="login" action="/server/register.php" method="post" accept-charset="utf-8">
-				<div class="email">
+				<div class="input">
 					<label for="login">Login</label>
 					<input name="login" placeholder="Login" required>
 				</div>
-				<div class="email">
+				<div class="input">
 					<label for="email">Email</label>
 					<input name="email" type="email" placeholder="email" required>
 				</div>
-				<div class="password">
+				<div class="input">
 					<label for="password">Password</label>
 					<input id="normalpass" type="password" name="password" placeholder="password" onkeyup="verifpass();" required>
 				</div>
@@ -45,6 +50,7 @@ if (!isset($_SESSION['login'])){
 
 
 	<footer>
+		<h5>Created By : Jeremy LA @ 42</h5>
 	</footer>
 	<script src="/client/scripts/verifypass.js"></script>
 	</body>

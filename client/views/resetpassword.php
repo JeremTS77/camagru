@@ -13,7 +13,13 @@ if(!isset($_SESSION['login'])){
 	</head>
 
 	<body>
-
+		<header>
+			<h1>CAMAGRU</h1>
+			<nav>
+			<a href="/client/views/signup.php">Create your account</a>
+			<a href="/client/views/signin.php">Already register ?</a>
+			</nav>
+		</header>
 		<h2 class="PageTitle">Reset Password</h2>
 
 		<form name="resetlast" action="/server/resetpassword.php" method="post" accept-charset="utf-8">
@@ -29,10 +35,8 @@ if(!isset($_SESSION['login'])){
 			<input type="submit" value="Login" id="SignupButton" disabled/>
 		</form>
 
-		<div>
-			<a href="/client/views/signin.php">Already register ?</a>
-		</div>
 	<footer>
+		<h5>Created By : Jeremy LA @ 42</h5>
 	</footer>
 	<script src="/client/scripts/verifypass.js"></script>
 	</body>
@@ -51,7 +55,13 @@ if(!isset($_SESSION['login'])){
 		<link href='https://fonts.googleapis.com/css?family=Averia+Sans+Libre' rel='stylesheet' type='text/css'>
 	</head>
 
-	<body>
+			<header>
+			<h1>CAMAGRU</h1>
+			<nav>
+			<a href="/client/views/signup.php">Create your account</a>
+			<a href="/client/views/signin.php">Already register ?</a>
+			</nav>
+		</header><body>
 		<h2 class="PageTitle">Reset Password</h2>
 
 		<div class= "form">
@@ -67,11 +77,11 @@ if(!isset($_SESSION['login'])){
 			</section>
 		</div>
 
-		<div>
-			<a href="/client/views/signin.php">Already register ?</a>
-		</div>
 	<footer>
+		<h5>Created By : Jeremy LA @ 42</h5>
 	</footer>
+
+
 	</body>
 <html>
 <?php
