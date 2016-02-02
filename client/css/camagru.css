@@ -10,8 +10,9 @@ html, body {
 	min-width : 750px;
 	max-height : 900px;
 	max-width: 900px;
-	margin-left:25%;
-	margin-top: 100px;
+	margin-left:10px;
+	margin-top : 30px;
+	margin-left: 300px;
 }
 .title_project h1 {
 	color: rgb(230, 230, 230);
@@ -70,11 +71,12 @@ footer h5{
 	text-decoration: none;
 }
 .myphoto{
+	position:absolute;
+	right:0px;
+	top:160px;
 	max-width:770px;
-	max-height : 75% !important;
+	max-height : 80% !important;
 	overflow : auto;
-	float : right;
-	margin-top: 20px;
 }
 .galerie{
 	max-height : 80%; !important;
@@ -112,6 +114,28 @@ footer h5{
 }
 .GalerieImg{
 	margin-left : 10px;
+}
+.tmp{
+	position:absolute;
+}
+.choiseclip{
+	position:absolute;
+	overflow-y : auto;
+	height : 80%;
+	margin:0px;
+	width : 250px;
+	top:160px;
+}
+.clipart{
+	margin:0px;
+	border : 0px;
+	padding : 0px;
+	width: 250px;
+	height : 250px;
+}
+.tricky{
+	max-width:750px;
+	max-height:560px;
 }
 @media screen and (max-width: 700px){
 	.GalerieImg{

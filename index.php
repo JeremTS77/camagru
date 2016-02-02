@@ -25,39 +25,49 @@ else{
 			</nav>
 			<h2>Take Picture</h2>
 		</header>
+		<div class="choiseclip" >
+			<img class="clipart" src="/client/images/birthday.png" onclick="add('birthday');"/>
+			<img class="clipart" src="/client/images/smiley.png" onclick="add('smiley');"/>
+			<img class="clipart" src="/client/images/arch.png" onclick="add('arch');"/>
+		</div>
 
-
-		<video id="video" class="VideoRendu" autoplay></video>
-		<button id="startbutton">Take Picture</button>
+		<div class="tmp VideoRendu">
+			<img src="" class="tricky" id="clipart"/>
+		</div>
+		<video class="VideoRendu" id="video" autoplay></video>
+		<button disabled id="startbutton">Take Picture</button>
 		<canvas hidden id="canvas"></canvas>
 		<form action="/server/recpicture.php" name="uploadphoto" method="post" hidden>
 			<input name="image" id="toto" hidden/>
 			<input name="login" value="<?php echo $_SESSION['login']?>" hidden/>
 		</form>
-<div class="myphoto">
-<?php
-	try{
-		$DB_DSNNAME = $DB_DSN.";dbname=".$DB_NAME;
-		$pdo = new PDO($DB_DSNNAME , $DB_USER, $DB_PASSWORD);
-	}
-	catch(PDOException $e){
-		$msg = 'ERREUR PDO dans ' . $e->getFile() . ' L.' . $e->getLine() . ' : ' . $e->getMessage();
-		die($msg);
-	}
-	$querry = "SELECT link FROM ".$DB_TABLE['pictures']." WHERE createur='".$_SESSION['login']."'";
-	$arr = $pdo->query($querry)->fetchAll();
-	if (isset($arr)){
-		$max = sizeof($arr);
-		for($i = 0; $i < $max; $i++){
-?>
-<img src="<?php echo $arr[$i]['link'];?>"/>
-<?php
-		}
-	}
-	$pdo=NULL;
-?>
-</div>
+
+		<div class="myphoto">
+		<?php
+			try{
+				$DB_DSNNAME = $DB_DSN.";dbname=".$DB_NAME;
+				$pdo = new PDO($DB_DSNNAME , $DB_USER, $DB_PASSWORD);
+			}
+			catch(PDOException $e){
+				$msg = 'ERREUR PDO dans ' . $e->getFile() . ' L.' . $e->getLine() . ' : ' . $e->getMessage();
+				die($msg);
+			}
+			$querry = "SELECT link FROM ".$DB_TABLE['pictures']." WHERE createur='".$_SESSION['login']."'";
+			$arr = $pdo->query($querry)->fetchAll();
+			if (isset($arr)){
+				$max = sizeof($arr);
+				for($i = 0; $i < $max; $i++){
+		?>
+		<img src="<?php echo $arr[$i]['link'];?>"/>
+		<?php
+				}
+			}
+			$pdo=NULL;
+		?>
+		</div>
+
 	<script src="/client/scripts/take_picture.js"></script>
+	<script src="/client/scripts/addclip.js"></script>
 	<footer>
 		<h5>Created By : Jeremy LA @ 42</h5>
 	</footer>
