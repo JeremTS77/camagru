@@ -40,6 +40,7 @@ else{
 		<form action="/server/recpicture.php" name="uploadphoto" method="post" hidden>
 			<input name="image" id="toto" hidden/>
 			<input name="login" value="<?php echo $_SESSION['login']?>" hidden/>
+			<input name="clip"  id="clipprep" hidden/>
 		</form>
 
 		<div class="myphoto">
