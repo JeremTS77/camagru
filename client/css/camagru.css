@@ -143,3 +143,32 @@ footer h5{
 		width:100%;
 	}
 }
+@media screen and (max-width: 1925px)
+{
+	.choiseclip{
+		position:relative;
+		display:inline;
+		width : 50%;
+		margin:none;
+		padding:none;
+		overflow : auto;
+		float : left;
+		height : 300px;
+	}
+	.myphoto{
+		position:relative;
+		margin:none;
+		padding:none;
+		width : 50%;
+		height : 300px;
+		overflow : auto;
+		float : right;
+	}
+	.VideoRendu{
+		width : 25%;
+		height : 25%;
+		min-height : 100px;
+		min-width: 100px;
+		margin-left:15px;
+	}
+}

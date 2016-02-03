@@ -15,6 +15,19 @@ if (isset($_SESSION['login'])){
 	$query = "INSERT INTO ".$DB_TABLE['pictures']."(createur, link)  VALUES('$login', '$link');";
 	$pdo->exec($query);
 	$pdo = NULL;
+
+	define('UPLOAD_DIR', '../uploads/');
+	$img = $_POST['image'];
+	$img = str_replace('data:image/jpeg;base64,', '', $img);
+	$img = str_replace(' ', '+', $img);
+	$data = base64_decode($img);
+	$file = UPLOAD_DIR . uniqid() . '.jpeg';
+	$success = file_put_contents($file, $data);
+
+	imagecopy($_POST['image'], $_POST['clip'], 10, 10, 0, 0, 50, 50);
+	$file1 = UPLOAD_DIR . uniqid() . '.jpeg';
+	$success = file_put_contents($file1, $file);
+	print $success ? $file : 'ERROR : File save failed.';
 }
 header('Location: /');
 exit;

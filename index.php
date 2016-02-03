@@ -25,12 +25,6 @@ else{
 			</nav>
 			<h2>Take Picture</h2>
 		</header>
-		<div class="choiseclip" >
-			<img class="clipart" src="/client/images/birthday.png" onclick="add('birthday');"/>
-			<img class="clipart" src="/client/images/smiley.png" onclick="add('smiley');"/>
-			<img class="clipart" src="/client/images/arch.png" onclick="add('arch');"/>
-		</div>
-
 		<div class="tmp VideoRendu">
 			<img src="" class="tricky" id="clipart"/>
 		</div>
@@ -42,6 +36,14 @@ else{
 			<input name="login" value="<?php echo $_SESSION['login']?>" hidden/>
 			<input name="clip"  id="clipprep" hidden/>
 		</form>
+
+		<div class="choiseclip" >
+			<img class="clipart" src="/client/images/birthday.png" onclick="add('birthday');"/>
+			<img class="clipart" src="/client/images/smiley.png" onclick="add('smiley');"/>
+			<img class="clipart" src="/client/images/arch.png" onclick="add('arch');"/>
+		</div>
+
+
 
 		<div class="myphoto">
 		<?php
