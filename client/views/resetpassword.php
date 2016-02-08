@@ -16,8 +16,9 @@ if(!isset($_SESSION['login'])){
 		<header>
 			<h1>CAMAGRU</h1>
 			<nav>
-			<a href="/client/views/signup.php">Create your account</a>
 			<a href="/client/views/signin.php">Already register ?</a>
+			<a href="/client/views/entercode.php">Enter activation code</a>
+			<a href="/client/views/signup.php">Create your account</a>
 			</nav>
 		</header>
 		<h2 class="PageTitle">Reset Password</h2>
@@ -58,8 +59,9 @@ if(!isset($_SESSION['login'])){
 			<header>
 			<h1>CAMAGRU</h1>
 			<nav>
-			<a href="/client/views/signup.php">Create your account</a>
 			<a href="/client/views/signin.php">Already register ?</a>
+			<a href="/client/views/entercode.php">Enter activation code</a>
+			<a href="/client/views/signup.php">Create your account</a>
 			</nav>
 		</header><body>
 		<h2 class="PageTitle">Reset Password</h2>

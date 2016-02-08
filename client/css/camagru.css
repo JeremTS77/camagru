@@ -98,6 +98,9 @@ footer h5{
 	height : 35px;
 	color : white;
 }
+button:disabled {
+	background: rgba(52, 73, 94,0.7);
+}
 .input input{
 	height : 35px;
 	width : 50%;
@@ -170,5 +173,6 @@ footer h5{
 		min-height : 100px;
 		min-width: 100px;
 		margin-left:15px;
+		margin-bottom: 240px;
 	}
 }

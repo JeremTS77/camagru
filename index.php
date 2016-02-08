@@ -25,11 +25,13 @@ else{
 			</nav>
 			<h2>Take Picture</h2>
 		</header>
-		<div class="tmp VideoRendu">
+<div class="VideoRendu" >
+		<div class="tmp">
 			<img src="" class="tricky" id="clipart"/>
 		</div>
-		<video class="VideoRendu" id="video" autoplay></video>
-		<button disabled id="startbutton">Take Picture</button>
+		<video id="video" autoplay></video>
+		<input class="Nucleare" type="image" src='/client/images/take.jpg' style="display:block;height:150px; width:150px;" disabled id="startbutton"/>
+</div>
 		<canvas hidden id="canvas"></canvas>
 		<form action="/server/recpicture.php" name="uploadphoto" method="post" hidden>
 			<input name="image" id="toto" hidden/>

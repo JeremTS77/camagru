@@ -15,8 +15,9 @@ if (!isset($_SESSION['login'])){
 		<header>
 			<h1>CAMAGRU</h1>
 			<nav>
+			<a href="/client/views/resetpassword.php">Forgotten password ?</a>
 			<a href="/client/views/signin.php">Already register ?</a>
-			<a href="/client/views/signup.php">Create your account</a>
+			<a href="/client/views/entercode.php">Enter activation code</a>
 			</nav>
 		</header>
 		<h2 class="PageTitle">Sign Up</h2>
@@ -42,7 +43,6 @@ if (!isset($_SESSION['login'])){
 
 				<button type="submit" value="Login" id="SignupButton" disabled  class="FormButton">Login</button>
 			</form>
-			</section>
 		</div>
 
 	<footer>

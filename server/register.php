@@ -16,6 +16,8 @@ if (!isset($_SESSION['login'])){
 		$pdo->exec($querry);
 		$querry = "UPDATE ".$DB_TABLE['users']." SET confirm=NULL  where confirm='".$_GET['confirm']."';";
 		$pdo->exec($querry);
+		header('Location: /client/views/signin.php');
+		exit;
 	}
 	else{
 		$login	= htmlspecialchars($_POST['login']);
@@ -31,13 +33,13 @@ if (!isset($_SESSION['login'])){
 		}
 		$yolohash = htmlspecialchars(hash('md5', $stryolo.$email));
 		$link = "http://localhost:8000/server/register.php?confirm=".$yolohash;
-		$msg = "Please click on the below link to active your password : \n" . $link;
+		$msg = "Please click on the below link to active your password : \n" . $link . "\n\nYour activation code is : " . $yolohash;
 		mail($email, "Active your account", $msg, $headers);
 		$query = "INSERT INTO ".$DB_TABLE['users']."(login, email, mdp, confirm)  VALUES('$login', '$email', '$mdp', '$yolohash');";
 		$pdo->exec($query);
 	}
 	$pdo = NULL;
 }
-header('Location: /');
+header('Location: /client/views/entercode.php');
 exit;
 ?>

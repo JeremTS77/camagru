@@ -16,36 +16,25 @@ if (!isset($_SESSION['login'])){
 			<h1>CAMAGRU</h1>
 			<nav>
 			<a href="/client/views/resetpassword.php">Forgotten password ?</a>
-			<a href="/client/views/entercode.php">Enter activation code</a>
+			<a href="/client/views/signin.php">Already register ?</a>
 			<a href="/client/views/signup.php">Create your account</a>
 			</nav>
 		</header>
 
-		<h2 class="PageTitle">Sign In</h2>
+		<h2 class="PageTitle">Acivation code</h2>
 
 		<div class= "form">
-			<form name="login" action="/server/login.php" method="post" accept-charset="utf-8">
+			<form name="login" action="/server/register.php" method="get" accept-charset="utf-8">
 				<div class="input">
-					<label for="usermail">Login</label>
-					<input name="login" placeholder="Login" required autofocus>
+					<label for="confirm">code</label>
+					<input name="confirm" placeholder="code" required autofocus>
 				</div>
-
-				<div class="input">
-					<label for="password">Password</label>
-					<input type="password" name="password" placeholder="password" required>
-				</div>
-
-				<button type="submit" class="FormButton">Login</button>
+				<button type="submit" class="FormButton">Active</button>
 			</form>
 		</div>
-
-
 	<footer>
 		<h5>Created By : Jeremy LA @ 42</h5>
 	</footer>
-
-		<script src="/client/scripts/take_picture.js"></script>
-	</body>
 <html>
 <?php
 }

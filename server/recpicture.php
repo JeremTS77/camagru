@@ -11,23 +11,29 @@ if (isset($_SESSION['login'])){
 		die($msg);
 	}
 	$login	= htmlspecialchars($_POST['login']);
-	$link = $_POST['image'];
-	$query = "INSERT INTO ".$DB_TABLE['pictures']."(createur, link)  VALUES('$login', '$link');";
-	$pdo->exec($query);
-	$pdo = NULL;
 
-	define('UPLOAD_DIR', '../uploads/');
 	$img = $_POST['image'];
 	$img = str_replace('data:image/jpeg;base64,', '', $img);
 	$img = str_replace(' ', '+', $img);
-	$data = base64_decode($img);
-	$file = UPLOAD_DIR . uniqid() . '.jpeg';
-	$success = file_put_contents($file, $data);
+	$destim = base64_decode($img);
+	$dest = imagecreatefromstring($destim);
+	$image = imagecreatefrompng("../client/images/".$_POST['clip'].".png");
 
-	imagecopy($_POST['image'], $_POST['clip'], 10, 10, 0, 0, 50, 50);
-	$file1 = UPLOAD_DIR . uniqid() . '.jpeg';
-	$success = file_put_contents($file1, $file);
-	print $success ? $file : 'ERROR : File save failed.';
+	imagealphablending($dest, true);
+	imagesavealpha($dest, true);
+
+	imagecopy($dest, $image, 0, 0, 0, 0, imagesx($image), imagesy($image));
+	ob_start();
+	imagejpeg($dest);
+	$image_data = ob_get_contents ();
+	ob_end_clean ();
+	$link = "data:image/jpeg;base64,".base64_encode($image_data);
+	$query = "INSERT INTO ".$DB_TABLE['pictures']."(createur, link)  VALUES('$login', '$link');";
+	$pdo->exec($query);
+
+	imagedestroy($image);
+	imagedestroy($dest);
+	$pdo = NULL;
 }
 header('Location: /');
 exit;

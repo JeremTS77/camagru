@@ -33,7 +33,7 @@ if (isset($_SESSION['login'])){
 		$msg = 'ERREUR PDO dans ' . $e->getFile() . ' L.' . $e->getLine() . ' : ' . $e->getMessage();
 		die($msg);
 	}
-	$querry = "SELECT link  FROM ".$DB_TABLE['pictures']." ORDER BY creation;";
+	$querry = "SELECT link  FROM ".$DB_TABLE['pictures']." order by creation DESC;";
 	$arr = $pdo->query($querry)->fetchAll();
 	if (isset($arr)){
 		$max = sizeof($arr);
