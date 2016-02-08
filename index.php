@@ -63,7 +63,11 @@ else{
 				$max = sizeof($arr);
 				for($i = 0; $i < $max; $i++){
 		?>
-		<img src="<?php echo $arr[$i]['link'];?>"/>
+		<form name="deletphoto" action="/server/supppicture.php" method="post">
+			<button>
+			<img src="<?php echo $arr[$i]['link'];?>"/>
+			</button>
+		</form>
 		<?php
 				}
 			}

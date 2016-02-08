@@ -100,6 +100,7 @@ footer h5{
 }
 button:disabled {
 	background: rgba(52, 73, 94,0.7);
+	font-style: italic;
 }
 .input input{
 	height : 35px;
