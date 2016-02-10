@@ -24,7 +24,7 @@ if (isset($_SESSION['login'])){
 
 
 <div class="galerie">
-<?php 
+<?php
 	try{
 		$DB_DSNNAME = $DB_DSN.";dbname=".$DB_NAME;
 		$pdo = new PDO($DB_DSNNAME , $DB_USER, $DB_PASSWORD);
@@ -33,13 +33,18 @@ if (isset($_SESSION['login'])){
 		$msg = 'ERREUR PDO dans ' . $e->getFile() . ' L.' . $e->getLine() . ' : ' . $e->getMessage();
 		die($msg);
 	}
-	$querry = "SELECT link  FROM ".$DB_TABLE['pictures']." order by creation DESC;";
+	$querry = "SELECT link,id  FROM ".$DB_TABLE['pictures']." order by creation DESC;";
 	$arr = $pdo->query($querry)->fetchAll();
 	if (isset($arr)){
 		$max = sizeof($arr);
 		for($i = 0; $i < $max; $i++){
 ?>
+<div clas="photogal" style="border:solid 1px blue; display:block;">
 <img class="GalerieImg" src="<?php echo $arr[$i]['link'];?>"/>
+<form action="/server/comment" method="post">
+<input hidden name="id" value="<?php echo $arr[$i]['id'];?>"/>
+<textarea placeholder="comment here..."></textarea>
+</div>
 <?php
 		}
 	}
