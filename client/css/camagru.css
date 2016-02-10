@@ -102,6 +102,18 @@ button:disabled {
 	background: rgba(52, 73, 94,0.7);
 	font-style: italic;
 }
+.photogal{
+	border:solid 1px blue;
+	height : 650px;
+	width: 750px;
+	display:inline-block;
+	margin : 5px;
+}
+.commentzone{
+	width :100%;
+	resize:none;
+	height : 50px;
+}
 .input input{
 	height : 35px;
 	width : 50%;
@@ -115,9 +127,6 @@ button:disabled {
 	color : white;
 	background:#34495e;
 	border:none;
-}
-.GalerieImg{
-	margin-left : 10px;
 }
 .tmp{
 	position:absolute;
@@ -145,7 +154,7 @@ button:disabled {
 	.GalerieImg{
 		height:60%;
 		width:100%;
-	}
+}
 }
 @media screen and (max-width: 1925px)
 {
@@ -158,22 +167,22 @@ button:disabled {
 		overflow : auto;
 		float : left;
 		height : 300px;
-	}
-	.myphoto{
-		position:relative;
-		margin:none;
-		padding:none;
-		width : 50%;
-		height : 300px;
-		overflow : auto;
-		float : right;
-	}
-	.VideoRendu{
-		width : 25%;
-		height : 25%;
-		min-height : 100px;
-		min-width: 100px;
-		margin-left:15px;
-		margin-bottom: 240px;
-	}
+}
+.myphoto{
+	position:relative;
+	margin:none;
+	padding:none;
+	width : 50%;
+	height : 300px;
+	overflow : auto;
+	float : right;
+}
+.VideoRendu{
+	width : 25%;
+	height : 25%;
+	min-height : 100px;
+	min-width: 100px;
+	margin-left:15px;
+	margin-bottom: 240px;
+}
 }

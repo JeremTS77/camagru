@@ -39,19 +39,17 @@ if (isset($_SESSION['login'])){
 		$max = sizeof($arr);
 		for($i = 0; $i < $max; $i++){
 ?>
-<div clas="photogal" style="border:solid 1px blue; display:block;">
+<div class="photogal" style="">
 <img class="GalerieImg" src="<?php echo $arr[$i]['link'];?>"/>
-<form action="/server/comment" method="post">
+<form action="/server/comment.php" method="post">
 <input hidden name="id" value="<?php echo $arr[$i]['id'];?>"/>
-<textarea placeholder="comment here..."></textarea>
+<textarea class="commentzone" placeholder="comment here..."></textarea>
 </div>
 <?php
 		}
 	}
 	$pdo=NULL;
 ?>
-
-
 
 	<footer>
 		<h5>Created By : Jeremy LA @ 42</h5>
