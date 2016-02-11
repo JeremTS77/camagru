@@ -106,17 +106,31 @@ button:disabled {
 	border:solid 1px blue;
 	height : 650px;
 	width: 750px;
-	display:inline-block;
+	display:inline-table;
 	margin : 5px;
 }
 .commentzone{
-	width :100%;
+	width : calc(100% - 10px);
+	margin: 0 5 0 5px;
 	resize:none;
-	height : 50px;
+	height : 40px;
 }
 .input input{
 	height : 35px;
 	width : 50%;
+}
+.formcomment{
+	margin : 0px;
+	padding-top:100px;
+}
+.commentbutton{
+	width : calc(100% - 10px);
+	height : 30px;
+	background : #34495e;
+	color : white;
+	margin : 5px !important;
+	padding : 0px;
+	border:0px;
 }
 .FormButton{
 	margin-top : 25px;
