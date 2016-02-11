@@ -41,9 +41,21 @@ if (isset($_SESSION['login'])){
 ?>
 <div class="photogal" style="">
 <img class="GalerieImg" src="<?php echo $arr[$i]['link'];?>"/>
-<form action="/server/comment.php" method="post">
+<div class="Commentedzone">
+<?php
+	$querry = "SELECT comment FROM ".$DB_TABLE['comments']." where photonum=".$arr[$i]['id'].";";
+	$array = $pdo->query($querry)->fetchAll();
+	for ($j = 0; $j < sizeof($array); $j++){
+		?> <p><?php echo $array[$j]['comment'];?></p><?php
+	}
+?>
+</div>
+<form action="/server/comment.php" method="post" class="formcomment">
 <input hidden name="id" value="<?php echo $arr[$i]['id'];?>"/>
-<textarea class="commentzone" placeholder="comment here..."></textarea>
+<input hidden name="login" value="<?php echo $_SESSION['login'];?>"/>
+<textarea name="comment" class="commentzone" placeholder="comment here..."></textarea>
+<button type="submit" class="commentbutton">Post comment</button>
+</form>
 </div>
 <?php
 		}

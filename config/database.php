@@ -5,6 +5,7 @@ $DB_PASSWORD = 'camagru';
 $DB_NAME = 'camagru';
 $DB_TABLE = array(
 	'users' => 'users',
-	'pictures' => 'pictures'
+	'pictures' => 'pictures',
+	'comments' => 'comments'
 );
 ?>
