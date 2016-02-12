@@ -115,13 +115,20 @@ button:disabled {
 	resize:none;
 	height : 40px;
 }
+.Commentedzone{
+	height: 150px;
+	overflow-x: auto;
+}
+.Commentedzone p{
+	margin : 0px;
+	border : solid grey 1px;
+}
 .input input{
 	height : 35px;
 	width : 50%;
 }
 .formcomment{
 	margin : 0px;
-	padding-top:100px;
 }
 .commentbutton{
 	width : calc(100% - 10px);

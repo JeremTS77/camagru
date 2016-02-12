@@ -16,7 +16,6 @@ if (isset($_POST['login'])){
 	$query = "SELECT mdp FROM ".$DB_TABLE['users']." where login='$login' and confirmed='1';";
 	$arr = $pdo->query($query)->fetch();
 	if ($arr["mdp"] == $mdp){
-		usleep(5);
 		$_SESSION['login']=$login;
 	}
 	$pdo = null;

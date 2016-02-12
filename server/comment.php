@@ -16,9 +16,9 @@ if (isset($_SESSION['login'])){
 	$id			= htmlspecialchars($_POST['id']);
 	$query = "INSERT INTO ".$DB_TABLE['comments']."(auteur, photonum, comment)  VALUES('$login', '$id', '$comment');";
 	$pdo->exec($query);
-	$query = "SELECT createur FROM ".$DB_TABLES['pictures']." WHERE id=".$id.";";
+	$query = "SELECT createur FROM ".$DB_TABLE['pictures']." WHERE id=".$id.";";
 	$arr = $pdo->query($query)->fetch();
-	$query = "SELECT email FROM ".$DB_TABLES['users']." WHERE login=".$arr['createur'].";";
+	$query = "SELECT email FROM ".$DB_TABLE['users']." WHERE login='".$arr['createur']."';";
 	$array = $pdo->query($query)->fetch();
 	$email = $array['email'];
 	$pdo = NULL;

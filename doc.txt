@@ -1,0 +1,3 @@
+https://openclassrooms.com/courses/pdo-comprendre-et-corriger-les-erreurs-les-plus-frequentes
+
+http://php.net/manual/fr/pdo.prepare.php
