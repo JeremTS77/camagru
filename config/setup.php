@@ -51,6 +51,7 @@ $querry = "DROP TABLE IF EXIST ".$DB_TABLE['comments'];
 $pdo->exec($querry);
 $querry = "CREATE TABLE IF NOT EXISTS ".$DB_TABLE['comments']."(id INT(11) AUTO_INCREMENT PRIMARY KEY NOT NULL, creation DATETIME NOT NULL  DEFAULT NOW() ,  auteur VARCHAR(255) NOT NULL, comment TEXT NOT NULL, photonum INT(11) NOT NULL);";
 $pdo->exec($querry);
+echo "Tables: ".$DB_TABLE['comments']." created".PHP_EOL;
 
 $pdo = null;
 echo "you can run \"php -S localhost:8000 -c php.ini\"".PHP_EOL;
