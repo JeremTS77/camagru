@@ -15,6 +15,7 @@ if (!isset($_SESSION['login'])){
 		<header>
 			<h1>CAMAGRU</h1>
 			<nav>
+			<a href="/client/views/galerie.php">Galerie</a>
 			<a href="/client/views/resetpassword.php">Forgotten password ?</a>
 			<a href="/client/views/signin.php">Already register ?</a>
 			<a href="/client/views/signup.php">Create your account</a>

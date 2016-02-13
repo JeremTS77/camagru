@@ -1,7 +1,6 @@
 <?php
 include '../../config/database.php';
 session_start();
-if (isset($_SESSION['login'])){
 ?>
 <!DOCTYPE HTML5>
 <html>
@@ -17,7 +16,14 @@ if (isset($_SESSION['login'])){
 			<h1>CAMAGRU</h1>
 			<nav>
 			<a href="/">Home</a>
+			<?php if (isset($_SESSION['login'])){ ?>
 			<a href="/server/logout.php">Logout</a>
+			<?php }
+			else {?>
+			<a href="/client/views/resetpassword.php">Forgotten password ?</a>
+			<a href="/client/views/entercode.php">Enter activation code</a>
+			<a href="/client/views/signup.php">Create your account</a>
+			<?php } ?>
 			</nav>
 			<h2>Galerie</h2>
 		</header>
@@ -50,24 +56,23 @@ if (isset($_SESSION['login'])){
 	}
 ?>
 </div>
+<?php if (isset($_SESSION['login'])){ ?>
 <form action="/server/comment.php" method="post" class="formcomment">
 <input hidden name="id" value="<?php echo $arr[$i]['id'];?>"/>
 <input hidden name="login" value="<?php echo $_SESSION['login'];?>"/>
 <textarea name="comment" class="commentzone" placeholder="comment here..."></textarea>
 <button type="submit" class="commentbutton">Post comment</button>
 </form>
+<?php } ?>
 </div>
 <?php
 		}
 	}
 	$pdo=NULL;
 ?>
-
+</div>
 	<footer>
 		<h5>Created By : Jeremy LA @ 42</h5>
 	</footer>
 	</body>
 </html>
-<?php
-}
-?>
