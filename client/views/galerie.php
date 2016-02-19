@@ -39,13 +39,14 @@ session_start();
 		$msg = 'ERREUR PDO dans ' . $e->getFile() . ' L.' . $e->getLine() . ' : ' . $e->getMessage();
 		die($msg);
 	}
-	$querry = "SELECT link,id  FROM ".$DB_TABLE['pictures']." order by creation DESC;";
+	$querry = "SELECT link,id,createur  FROM ".$DB_TABLE['pictures']." order by creation DESC;";
 	$arr = $pdo->query($querry)->fetchAll();
 	if (isset($arr)){
 		$max = sizeof($arr);
 		for($i = 0; $i < $max; $i++){
 ?>
 <div class="photogal" style="">
+Auteur : <?php echo $arr[$i]['createur']; ?>
 <img class="GalerieImg" src="<?php echo $arr[$i]['link'];?>"/>
 <div class="Commentedzone">
 <?php
