@@ -15,13 +15,18 @@ if (!isset($_SESSION['login'])){
 	if (isset($_POST['reset'])){
 		$mdp	= htmlspecialchars(hash('whirlpool', $_POST['password']));
 		$salt = $_POST['reset'];
-		$querry = "UPDATE " . $DB_TABLE['users']." SET mdp='$mdp' where reset='$salt';";
-		$pdo->exec($querry);
-		$querry = "select login from ".$DB_TABLE['users']." where reset='$salt';";
-		$array = $pdo->query($querry)->fetch();
+		$stmt = $pdo->prepare("UPDATE " . $DB_TABLE['users']." SET mdp=:mdp where reset=:salt");
+		$stmt->bindValue(':mdp', $mdp);
+		$stmt->bindValue(':salt', $salt);
+		$stmt->execute();
+		$stmt = $pdo->prepare("select login from ".$DB_TABLE['users']." where reset=:salt");
+		$stmt->bindValue(':salt', $salt);	
+		$stmt->execute();
+		$array =$stmt->fetch();
 		$_SESSION['login']=$array['login'];
-		$querry = "UPDATE ".$DB_TABLE['users']." SET reset=NULL where reset='$salt';";
-		$pdo->exec($querry);
+		$stmt = $pdo->prepare("UPDATE ".$DB_TABLE['users']." SET reset=NULL where reset=:salt");
+		$stmt->bindValue(':salt', $salt);
+		$stmt->execute();
 	}
 	else{
 		$email = htmlspecialchars($_POST['email']);
@@ -40,8 +45,9 @@ if (!isset($_SESSION['login'])){
 
 		mail($email, "Reset Password", $msg, $headers);
 
-		$querry = "UPDATE ".$DB_TABLE['users']." SET reset='$yolohash' where email='$email';";
-		$pdo->exec($querry);
+		$stmt = $pdo->prepare("UPDATE ".$DB_TABLE['users']." SET reset='$yolohash' where email=:email");
+		$stmt->bindValue(':email', $email);
+		$stmt->execute();
 	}
 	$pdo = NULL;
 }

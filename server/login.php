@@ -13,8 +13,10 @@ if (isset($_POST['login'])){
 	}
 	$login	= htmlspecialchars($_POST['login']);
 	$mdp	= htmlspecialchars(hash('whirlpool', $_POST['password']));
-	$query = "SELECT mdp FROM ".$DB_TABLE['users']." where login='$login' and confirmed='1';";
-	$arr = $pdo->query($query)->fetch();
+	$stmt = $pdo->prepare("SELECT mdp FROM ".$DB_TABLE['users']." where login=:login and confirmed='1'");
+	$stmt->bindvalue(':login', $login, PDO::PARAM_STR);
+	$stmt->execute();
+	$arr = $stmt->fetch();
 	if ($arr["mdp"] == $mdp){
 		$_SESSION['login']=$login;
 	}

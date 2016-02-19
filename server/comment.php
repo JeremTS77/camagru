@@ -14,14 +14,26 @@ if (isset($_SESSION['login'])){
 	$comment	= htmlspecialchars($_POST['comment']);
 	$login		= htmlspecialchars($_POST['login']);
 	$id			= htmlspecialchars($_POST['id']);
-	$query = "INSERT INTO ".$DB_TABLE['comments']."(auteur, photonum, comment)  VALUES('$login', '$id', '$comment');";
-	$pdo->exec($query);
-	$query = "SELECT createur FROM ".$DB_TABLE['pictures']." WHERE id=".$id.";";
-	$arr = $pdo->query($query)->fetch();
-	$query = "SELECT email FROM ".$DB_TABLE['users']." WHERE login='".$arr['createur']."';";
-	$array = $pdo->query($query)->fetch();
-	$email = $array['email'];
+
+	$stmt = $pdo->prepare("INSERT INTO ".$DB_TABLE['comments']."(auteur, photonum, comment)  VALUES(:login, :id, :comment)");
+	$stmt->bindValue(':login', $login);
+	$stmt->bindValue(':id', $id);
+	$stmt->bindValue(':comment', $comment);
+	$stmt->execute();
+
+	$stmt = $pdo->prepare("SELECT createur FROM ".$DB_TABLE['pictures']." WHERE id=:id");
+	$stmt->bindValue(':id', $id);
+	$stmt->execute();
+	$arr = $stmt->fetch();
+
+	$stmt = $pdo->prepare("SELECT email FROM ".$DB_TABLE['users']." WHERE login=:createur");
+	$stmt->bindValue(':createur', $arr['createur']);
+	$stmt->execute();
+	$array = $stmt->fetch();
 	$pdo = NULL;
+
+	$email = $array['email'];
+
 	$headers = 'From: Admin<admin@camagru.42.fr>' . "\r\n" .
 		'Reply-To: <admin@camagru.42.fr>' . "\r\n" .
 		'X-Mailer: PHP/' . phpversion();

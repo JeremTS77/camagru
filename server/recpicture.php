@@ -22,14 +22,21 @@ if (isset($_SESSION['login'])){
 	imagealphablending($dest, true);
 	imagesavealpha($dest, true);
 
-	imagecopy($dest, $image, 0, 0, 0, 0, imagesx($image), imagesy($image));
+	if ($_POST['clip'] == 'arch'){
+	imagecopy($dest, $image, imagesx($dest)-imagesx($image), imagesy($dest)-imagesy($image), 0, 0, imagesx($image), imagesy($image));
+	}
+	else{
+			imagecopy($dest, $image, 0, 0, 0, 0, imagesx($image), imagesy($image));
+	}
 	ob_start();
 	imagejpeg($dest);
 	$image_data = ob_get_contents ();
 	ob_end_clean ();
 	$link = "data:image/jpeg;base64,".base64_encode($image_data);
-	$query = "INSERT INTO ".$DB_TABLE['pictures']."(createur, link)  VALUES('$login', '$link');";
-	$pdo->exec($query);
+	$stmt = $pdo->prepare("INSERT INTO ".$DB_TABLE['pictures']."(createur, link) VALUES(:login, :link)");
+	$stmt->bindValue(':login', $login);
+	$stmt->bindValue(':link', $link);
+	$stmt->execute();
 
 	imagedestroy($image);
 	imagedestroy($dest);

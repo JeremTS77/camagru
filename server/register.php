@@ -12,10 +12,12 @@ if (!isset($_SESSION['login'])){
 		die($msg);
 	}
 	if (isset($_GET['confirm'])){
-		$querry = "UPDATE ".$DB_TABLE['users']." SET confirmed='1' where confirm='".$_GET['confirm']."';";
-		$pdo->exec($querry);
-		$querry = "UPDATE ".$DB_TABLE['users']." SET confirm=NULL  where confirm='".$_GET['confirm']."';";
-		$pdo->exec($querry);
+		$stmt = $pdo->prepare("UPDATE ".$DB_TABLE['users']." SET confirmed='1' where confirm=:confirm");
+		$stmt->bindValue(':confirm', $_GET['confirm']);
+		$stmt->execute();
+		$stmt = $pdo->prepare("UPDATE ".$DB_TABLE['users']." SET confirm=NULL where where confirm=:confirm");
+		$stmt->bindValue(':confirm', $_GET['confirm']);
+		$stmt->execute();
 		header('Location: /client/views/signin.php');
 		exit;
 	}
@@ -35,8 +37,11 @@ if (!isset($_SESSION['login'])){
 		$link = "http://localhost:8000/server/register.php?confirm=".$yolohash;
 		$msg = "Please click on the below link to active your password : \n" . $link . "\n\nYour activation code is : " . $yolohash;
 		mail($email, "Active your account", $msg, $headers);
-		$query = "INSERT INTO ".$DB_TABLE['users']."(login, email, mdp, confirm)  VALUES('$login', '$email', '$mdp', '$yolohash');";
-		$pdo->exec($query);
+		$stmt = $pdo->prepare("INSERT INTO ".$DB_TABLE['users']."(login, email, mdp, confirm)  VALUES(:login, :email, :mdp, '$yolohash')");
+		$stmt->bindValue(':login', $login);
+		$stmt->bindValue(':email', $email);
+		$stmt->bindValue(':mdp', $mdp);
+		$stmt->execute();
 	}
 	$pdo = NULL;
 }
