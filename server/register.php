@@ -15,7 +15,7 @@ if (!isset($_SESSION['login'])){
 		$stmt = $pdo->prepare("UPDATE ".$DB_TABLE['users']." SET confirmed='1' where confirm=:confirm");
 		$stmt->bindValue(':confirm', $_GET['confirm']);
 		$stmt->execute();
-		$stmt = $pdo->prepare("UPDATE ".$DB_TABLE['users']." SET confirm=NULL where where confirm=:confirm");
+		$stmt = $pdo->prepare("UPDATE ".$DB_TABLE['users']." SET confirm=NULL where confirm=:confirm");
 		$stmt->bindValue(':confirm', $_GET['confirm']);
 		$stmt->execute();
 		header('Location: /client/views/signin.php');
