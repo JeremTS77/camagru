@@ -58,12 +58,18 @@ Auteur : <?php echo $arr[$i]['createur']; ?>
 ?>
 </div>
 <?php if (isset($_SESSION['login'])){ ?>
+<!--	<form action="/server/like.php" method="post">
+		<input hidden name="id" value="<?php echo $arr[$i]['id'];?>"/>
+		<input hidden name="login" value="<?php echo $_SESSION['login'];?>"/>
+		<button type="submit">Like</button>
+		</form>
+-->
 <form action="/server/comment.php" method="post" class="formcomment">
-<input hidden name="id" value="<?php echo $arr[$i]['id'];?>"/>
-<input hidden name="login" value="<?php echo $_SESSION['login'];?>"/>
-<textarea name="comment" class="commentzone" placeholder="comment here..."></textarea>
-<button type="submit" class="commentbutton">Post comment</button>
-</form>
+		<input hidden name="id" value="<?php echo $arr[$i]['id'];?>"/>
+		<input hidden name="login" value="<?php echo $_SESSION['login'];?>"/>
+		<textarea name="comment" class="commentzone" placeholder="comment here..."></textarea>
+		<button type="submit" class="commentbutton">Post comment</button>
+	</form>
 <?php } ?>
 </div>
 <?php

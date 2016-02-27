@@ -29,9 +29,9 @@ else{
 		<div class="tmp">
 			<img src="" class="tricky" id="clipart"/>
 		</div>
-		<video id="video" autoplay></video>
-		<input class="Nucleare" type="image" src='/client/images/take.jpg' style="display:inline-table;height:150px; width:150px;" disabled id="startbutton"/>
+		<video id="video" class="liveVideo" autoplay></video>
 
+		<div>
 		<form action="/server/recpicture.php" name="uploadphoto" method="post" style="display:inline-table;">
 			<input name="image" id="toto" hidden/>
 			<input name="login" value="<?php echo $_SESSION['login']?>" hidden/>
@@ -43,8 +43,9 @@ else{
 				<option value="br">Bottom Right</option>
 				<option value="top" disabled>Top</option>
 			</select>
-
 		</form>
+		<input class="Nucleare" type="image" src='/client/images/take.jpg' style="display:inline-table;height:150px; width:150px;" disabled id="startbutton"/>
+		</div>
 </div>
 		<canvas hidden id="canvas"></canvas>
 
@@ -57,6 +58,10 @@ else{
 
 
 		<div class="myphoto">
+		<form name="restorephoto" action="/server/supppicture.php" method="post">
+			<input name="restore" value="1" hidden/>
+			<button type="submit" class="deleteButton">/!\ restore all deleted pictures /!\</button>
+		</form>
 		<?php
 			try{
 				$DB_DSNNAME = $DB_DSN.";dbname=".$DB_NAME;
@@ -66,16 +71,17 @@ else{
 				$msg = 'ERREUR PDO dans ' . $e->getFile() . ' L.' . $e->getLine() . ' : ' . $e->getMessage();
 				die($msg);
 			}
-			$querry = "SELECT link FROM ".$DB_TABLE['pictures']." WHERE createur='".$_SESSION['login']."'";
+			$querry = "SELECT link, id FROM ".$DB_TABLE['pictures']." WHERE createur='".$_SESSION['login']."' and deleted=0";
 			$arr = $pdo->query($querry)->fetchAll();
 			if (isset($arr)){
 				$max = sizeof($arr);
 				for($i = 0; $i < $max; $i++){
 		?>
+
 		<form name="deletphoto" action="/server/supppicture.php" method="post">
-			<button>
+			<input name="photoid" value="<?php echo $arr[$i]['id']; ?>" hidden/>
 			<img src="<?php echo $arr[$i]['link'];?>"/>
-			</button>
+			<button type="submit" class="deleteButton">Delete</button>
 		</form>
 		<?php
 				}

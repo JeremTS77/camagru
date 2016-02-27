@@ -5,6 +5,14 @@ html, body {
 	padding: 0px;
 	margin: 0px;
 }
+.deleteButton{
+	width : 100%;
+	height : 35px;
+	font-size:20px;
+	color : white;
+	background:#34495e;
+	border:none;
+}
 .VideoRendu{
 	min-height : 562px;
 	min-width : 750px;
@@ -171,6 +179,12 @@ button:disabled {
 	max-width:750px;
 	max-height:560px;
 }
+@media screen and (max-width : 800){
+	.liveVideo{
+		width : 50%;
+		height: 50%;
+	}
+}
 @media screen and (max-width: 700px){
 	.GalerieImg{
 		height : 150px;
@@ -184,6 +198,7 @@ button:disabled {
 		display:inline;
 		width : 50%;
 		margin:none;
+		margin-top:20px;
 		padding:none;
 		overflow : auto;
 		float : left;

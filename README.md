@@ -1,6 +1,6 @@
 #Camagru
 
-#/
+##/
 	->index.html		= define root document for server
 	->php.ini			= define path for sendmail
 
@@ -38,3 +38,32 @@
 	->resetpassword.php	= form for reset password
 	->signin.php		= form for sign in
 	->signup.php		= form for sign up
+
+##DB
+	->USERS		:
+		*id			: primary key for build a ref on user
+		*login		: unique used for singin
+		*email		: unique used for active, reset and comment
+		*mdp		: for singin
+		*reset		: hash for reset request
+		*confirm	: hash for confirm request
+		*confirmed	: bool for corfirm the account
+
+	->PICTURES	:
+		*id			: primary key for buil a ref on picture
+		*creation	: datetime for sort pictures by time in gallerie
+		*deleted	: bool 0 == not deleted 1 == deleted
+		*createur	: ref on user
+		*link		: content base64 with the picture
+
+	->COMMENTS	:
+		*id			: ref on comment
+		*creation	: sort by time they comments
+		*auteur		: ref on user
+		*comment	: content TEXT with the comment
+		*photonum	: ref on pictures commented
+
+	->LIKE		:
+		*id			: ref on like (probably not used)
+		*refphotoid	: ref on picture liked
+		*login		: ref on user who has like the photo
