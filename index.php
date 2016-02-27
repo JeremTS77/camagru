@@ -30,21 +30,30 @@ else{
 			<img src="" class="tricky" id="clipart"/>
 		</div>
 		<video id="video" autoplay></video>
-		<input class="Nucleare" type="image" src='/client/images/take.jpg' style="display:block;height:150px; width:150px;" disabled id="startbutton"/>
-</div>
-		<canvas hidden id="canvas"></canvas>
-		<form action="/server/recpicture.php" name="uploadphoto" method="post" hidden>
+		<input class="Nucleare" type="image" src='/client/images/take.jpg' style="display:inline-table;height:150px; width:150px;" disabled id="startbutton"/>
+
+		<form action="/server/recpicture.php" name="uploadphoto" method="post" style="display:inline-table;">
 			<input name="image" id="toto" hidden/>
 			<input name="login" value="<?php echo $_SESSION['login']?>" hidden/>
 			<input name="clip"  id="clipprep" hidden/>
+			<select name="coner" id="coner">
+				<option value="tl">Top Left</option>
+				<option value="tr">Top Right</option>
+				<option value="bl">Bottom Left</option>
+				<option value="br">Bottom Right</option>
+				<option value="top" disabled>Top</option>
+			</select>
+
 		</form>
+</div>
+		<canvas hidden id="canvas"></canvas>
+
 
 		<div class="choiseclip" >
 			<img class="clipart" src="/client/images/birthday.png" onclick="add('birthday');"/>
 			<img class="clipart" src="/client/images/smiley.png" onclick="add('smiley');"/>
 			<img class="clipart" src="/client/images/arch.png" onclick="add('arch');"/>
 		</div>
-
 
 
 		<div class="myphoto">

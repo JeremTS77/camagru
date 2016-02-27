@@ -22,11 +22,18 @@ if (isset($_SESSION['login'])){
 	imagealphablending($dest, true);
 	imagesavealpha($dest, true);
 
-	if ($_POST['clip'] == 'arch'){
-	imagecopy($dest, $image, imagesx($dest)-imagesx($image), imagesy($dest)-imagesy($image), 0, 0, imagesx($image), imagesy($image));
+	echo $_POST['coner'];
+	if ($_POST['coner'] == 'br'){
+		imagecopy($dest, $image, imagesx($dest)-imagesx($image), imagesy($dest)-imagesy($image), 0, 0, imagesx($image), imagesy($image));
+	}
+	else if ($_POST['coner'] == 'bl'){
+		imagecopy($dest, $image, 0, imagesy($dest)-imagesy($image), 0, 0, imagesx($image), imagesy($image));
+	}
+	else if ($_POST['coner'] == 'tl'){
+		imagecopy($dest, $image, 0, 0, 0, 0, imagesx($image), imagesy($image));
 	}
 	else{
-			imagecopy($dest, $image, 0, 0, 0, 0, imagesx($image), imagesy($image));
+		imagecopy($dest, $image, imagesx($dest)-imagesx($image), 0, 0, 0, imagesx($image), imagesy($image));
 	}
 	ob_start();
 	imagejpeg($dest);
