@@ -6,6 +6,7 @@ $DB_NAME = 'camagru';
 $DB_TABLE = array(
 	'users' => 'users',
 	'pictures' => 'pictures',
-	'comments' => 'comments'
+	'comments' => 'comments',
+	'likes' => 'likes'
 );
 ?>

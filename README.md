@@ -63,7 +63,7 @@
 		*comment	: content TEXT with the comment
 		*photonum	: ref on pictures commented
 
-	->LIKE		:
+	->LIKES		:
 		*id			: ref on like (probably not used)
 		*refphotoid	: ref on picture liked
 		*login		: ref on user who has like the photo

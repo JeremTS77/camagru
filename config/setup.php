@@ -53,6 +53,14 @@ $querry = "CREATE TABLE IF NOT EXISTS ".$DB_TABLE['comments']."(id INT(11) AUTO_
 $pdo->exec($querry);
 echo "Tables: ".$DB_TABLE['comments']." created".PHP_EOL;
 
+//creation like tables;
+$querry = "DROP TABLE IF EXIST ".$DB_TABLE['likes'];
+$pdo->exec($querry);
+$querry = "CREATE TABLE IF NOT EXISTS ".$DB_TABLE['likes']."(id INT(11) AUTO_INCREMENT PRIMARY KEY NOT NULL, refphotoid INT(11) NOT NULL ,  LOGIN VARCHAR(255) NOT NULL);";
+$pdo->exec($querry);
+echo "Tables: ".$DB_TABLE['likes']." created".PHP_EOL;
+
+
 $pdo = null;
 echo "you can run \"php -S localhost:8000 -c php.ini\"".PHP_EOL;
 ?>
