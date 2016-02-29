@@ -46,7 +46,14 @@ session_start();
 		for($i = 0; $i < $max; $i++){
 ?>
 <div class="photogal" style="">
-Auteur : <?php echo $arr[$i]['createur']; ?>
+<span>Auteur : <?php echo $arr[$i]['createur']; ?></span>
+<?php if (isset($_SESSION['login'])){ ?>
+		<form action="/server/like.php" method="post">
+		<input hidden name="id" value="<?php echo $arr[$i]['id'];?>"/>
+		<input hidden name="login" value="<?php echo $_SESSION['login'];?>"/>
+		<button type="submit">Like</button>
+		</form>
+<?php } ?>
 <img class="GalerieImg" src="<?php echo $arr[$i]['link'];?>"/>
 <div class="Commentedzone">
 <?php
@@ -58,7 +65,8 @@ Auteur : <?php echo $arr[$i]['createur']; ?>
 ?>
 </div>
 <?php if (isset($_SESSION['login'])){ ?>
-<!--	<form action="/server/like.php" method="post">
+<!--
+		<form action="/server/like.php" method="post">
 		<input hidden name="id" value="<?php echo $arr[$i]['id'];?>"/>
 		<input hidden name="login" value="<?php echo $_SESSION['login'];?>"/>
 		<button type="submit">Like</button>
