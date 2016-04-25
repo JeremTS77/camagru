@@ -39,6 +39,10 @@ session_start();
 		$msg = 'ERREUR PDO dans ' . $e->getFile() . ' L.' . $e->getLine() . ' : ' . $e->getMessage();
 		die($msg);
 	}
+	$q = $pdo->prepare("SELECT refphotoid FROM ".$DB_TABLE['likes']." WHERE LOGIN=:login;");
+	$q->bindvalue(':login', $_SESSION['login']);
+	$qq = $q->execute();
+	$liketab = $q->fetchAll();
 	$querry = "SELECT link,id,createur  FROM ".$DB_TABLE['pictures']." order by creation DESC;";
 	$arr = $pdo->query($querry)->fetchAll();
 	if (isset($arr)){
@@ -47,13 +51,37 @@ session_start();
 ?>
 <div class="photogal" style="">
 <span>Auteur : <?php echo $arr[$i]['createur']; ?></span>
-<?php if (isset($_SESSION['login'])){ ?>
+<?php if (isset($_SESSION['login'])){
+	if (isset($liketab)){
+		$maxlike = sizeof($liketab);
+		$flag = 0;
+		for($j = 0; $j < $maxlike; $j++){
+			if ($liketab[$j]['refphotoid'] == $arr[$i]['id']){
+				$flag = 1;
+			}
+		}
+		if ($flag == 1){?>
+		<form action="/server/unlike.php" method="post">
+		<input hidden name="id" value="<?php echo $arr[$i]['id'];?>"/>
+		<input hidden name="login" value="<?php echo $_SESSION['login'];?>"/>
+		<button type="submit">Unlike</button>
+		</form>
+<?php }
+else {?>
 		<form action="/server/like.php" method="post">
 		<input hidden name="id" value="<?php echo $arr[$i]['id'];?>"/>
 		<input hidden name="login" value="<?php echo $_SESSION['login'];?>"/>
 		<button type="submit">Like</button>
 		</form>
-<?php } ?>
+<?php }
+	}
+	if (!isset($liketab)){?>
+		<form action="/server/like.php" method="post">
+		<input hidden name="id" value="<?php echo $arr[$i]['id'];?>"/>
+		<input hidden name="login" value="<?php echo $_SESSION['login'];?>"/>
+		<button type="submit">Like</button>
+		</form>
+<?php }} ?>
 <img class="GalerieImg" src="<?php echo $arr[$i]['link'];?>"/>
 <div class="Commentedzone">
 <?php
@@ -65,13 +93,6 @@ session_start();
 ?>
 </div>
 <?php if (isset($_SESSION['login'])){ ?>
-<!--
-		<form action="/server/like.php" method="post">
-		<input hidden name="id" value="<?php echo $arr[$i]['id'];?>"/>
-		<input hidden name="login" value="<?php echo $_SESSION['login'];?>"/>
-		<button type="submit">Like</button>
-		</form>
--->
 <form action="/server/comment.php" method="post" class="formcomment">
 		<input hidden name="id" value="<?php echo $arr[$i]['id'];?>"/>
 		<input hidden name="login" value="<?php echo $_SESSION['login'];?>"/>

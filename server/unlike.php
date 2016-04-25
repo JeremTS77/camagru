@@ -12,7 +12,7 @@ if (isset($_POST['login'])){
 		die($msg);
 	}
 	$login	= htmlspecialchars($_POST['login']);
-	$stmt = $pdo->prepare("INSERT INTO ".$DB_TABLE['likes']."(refphotoid, LOGIN) values(:photoid,:login);");
+	$stmt = $pdo->prepare("DELETE FROM ".$DB_TABLE['likes']." WHERE refphotoid=:photoid && LOGIN=:login;");
 	$stmt->bindvalue(':photoid', $_POST['id']);
 	$stmt->bindvalue(':login', $login, PDO::PARAM_STR);
 	$stmt->execute();
