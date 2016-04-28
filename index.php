@@ -32,10 +32,11 @@ else{
 		<video id="video" class="liveVideo" autoplay></video>
 
 		<div>
-		<form action="/server/recpicture.php" name="uploadphoto" method="post" style="display:inline-table;">
+		<form action="/server/recpicture.php" name="uploadphoto" method="post" style="display:inline-table;" enctype="multipart/form-data">
 			<input name="image" id="toto" hidden/>
 			<input name="login" value="<?php echo $_SESSION['login']?>" hidden/>
 			<input name="clip"  id="clipprep" hidden/>
+			<input name="upload" type="file" accept="image/jpeg" style="display:inline; float:left"/>
 			<select name="coner" id="coner">
 				<option value="tl">Top Left</option>
 				<option value="tr">Top Right</option>
