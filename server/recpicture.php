@@ -65,6 +65,6 @@ if (isset($_SESSION['login'])){
 	imagedestroy($dest);
 	$pdo = NULL;
 }
-//header('Location: /');
-//exit;
+header('Location: /');
+exit;
 ?>

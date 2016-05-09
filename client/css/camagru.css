@@ -111,7 +111,8 @@ button:disabled {
 	font-style: italic;
 }
 .photogal{
-	border:solid 1px blue;
+	border:solid 1px #34495e;
+	border-radius:5px;
 	height : 650px;
 	width: 750px;
 	display:inline-table;

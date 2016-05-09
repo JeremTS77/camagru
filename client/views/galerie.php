@@ -51,6 +51,12 @@ session_start();
 ?>
 <div class="photogal" style="">
 <span>Auteur : <?php echo $arr[$i]['createur']; ?></span>
+<span style="float:right;"><?php
+	$likequerry = "SELECT id FROM ".$DB_TABLE['likes']." where refphotoid=".$arr[$i]['id'];
+	$q = $pdo->prepare($likequerry);
+	$q->execute();
+	echo $q->rowCount();?> like(s)</span>
+
 <?php if (isset($_SESSION['login'])){
 	if (isset($liketab)){
 		$maxlike = sizeof($liketab);
@@ -87,6 +93,10 @@ else {?>
 <?php
 	$querry = "SELECT comment FROM ".$DB_TABLE['comments']." where photonum=".$arr[$i]['id'].";";
 	$array = $pdo->query($querry)->fetchAll();
+	$likequerry = "SELECT like FROM ".$DB_TABLE['like']." where refphotoid=".$arr[$i]['id'];
+	$q = $pdo->prepare($likequerry);
+	$q->execute();
+	$count = $q->rowCount();
 	for ($j = 0; $j < sizeof($array); $j++){
 		?> <p><?php echo $array[$j]['comment'];?></p><?php
 	}
