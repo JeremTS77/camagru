@@ -31,6 +31,7 @@ session_start();
 
 <div class="galerie">
 <?php
+//Pdo connect
 	try{
 		$DB_DSNNAME = $DB_DSN.";dbname=".$DB_NAME;
 		$pdo = new PDO($DB_DSNNAME , $DB_USER, $DB_PASSWORD);
@@ -39,11 +40,35 @@ session_start();
 		$msg = 'ERREUR PDO dans ' . $e->getFile() . ' L.' . $e->getLine() . ' : ' . $e->getMessage();
 		die($msg);
 	}
-	$q = $pdo->prepare("SELECT refphotoid FROM ".$DB_TABLE['likes']." WHERE LOGIN=:login;");
-	$q->bindvalue(':login', $_SESSION['login']);
+//Pdo connect
+
+
+
+//Pagination
+	$countqpic = "SELECT id FROM ".$DB_TABLE['pictures'];
+	$countpictures = $pdo->prepare($countqpic);
+	$countpictures->execute();
+	$nbElement = $countpictures->rowCount();
+	$nbMaxPage = ceil($nbElement / 3);
+if (isset($_GET['p']) && $_GET['p'] > 0  && $_GET['p'] <= $nbMaxPage){
+	$cPage = $_GET['p'];
+}
+else{
+	$cPage = 1;
+}
+//Pagination
+
+//User like for unlike button
+if (isset($_SESSION["login"])){
+	$q = $pdo->prepare("SELECT refphotoid FROM ".$DB_TABLE['likes']." WHERE LOGIN=:log");
+	$q->bindvalue(':log', $_SESSION["login"], PDO::PARAM_STR);
 	$qq = $q->execute();
 	$liketab = $q->fetchAll();
-	$querry = "SELECT link,id,createur  FROM ".$DB_TABLE['pictures']." order by creation DESC;";
+}
+//User like for unlike button
+
+//Get photo per page with limit sql instruction
+	$querry = "SELECT link,id,createur  FROM ".$DB_TABLE['pictures']." order by creation DESC LIMIT ". (($cPage-1)*3).",3;";
 	$arr = $pdo->query($querry)->fetchAll();
 	if (isset($arr)){
 		$max = sizeof($arr);
@@ -51,13 +76,17 @@ session_start();
 ?>
 <div class="photogal" style="">
 <span>Auteur : <?php echo $arr[$i]['createur']; ?></span>
-<span style="float:right;"><?php
+<?php
 	$likequerry = "SELECT id FROM ".$DB_TABLE['likes']." where refphotoid=".$arr[$i]['id'];
 	$q = $pdo->prepare($likequerry);
 	$q->execute();
-	echo $q->rowCount();?> like(s)</span>
+	if ($q->rowCount() > 0){
+		?>
+		<span style="float:right;"><?php
+		echo $q->rowCount(); ?> like<?php if ($q->rowCount() > 1){echo "s";}?></span><?php
+	}
 
-<?php if (isset($_SESSION['login'])){
+if (isset($_SESSION['login'])){
 	if (isset($liketab)){
 		$maxlike = sizeof($liketab);
 		$flag = 0;
@@ -88,12 +117,12 @@ else {?>
 		<button type="submit">Like</button>
 		</form>
 <?php }} ?>
-<img class="GalerieImg" src="<?php echo $arr[$i]['link'];?>"/>
+<br/><img class="GalerieImg" src="<?php echo $arr[$i]['link'];?>"/>
 <div class="Commentedzone">
 <?php
 	$querry = "SELECT comment FROM ".$DB_TABLE['comments']." where photonum=".$arr[$i]['id'].";";
 	$array = $pdo->query($querry)->fetchAll();
-	$likequerry = "SELECT like FROM ".$DB_TABLE['like']." where refphotoid=".$arr[$i]['id'];
+	$likequerry = "SELECT like FROM ".$DB_TABLE['likes']." where refphotoid=".$arr[$i]['id'];
 	$q = $pdo->prepare($likequerry);
 	$q->execute();
 	$count = $q->rowCount();
@@ -116,6 +145,20 @@ else {?>
 	}
 	$pdo=NULL;
 ?>
+	<div style="text-align:center;margin-top:25px;">
+<?php
+	for ($page = 1; $page <= $nbMaxPage; $page++){
+		if ($page == $cPage)
+		{
+			echo " $page /";
+		}
+		else
+		{
+			echo " <a href=\"/client/views/galerie.php?p=$page\">$page</a> /";
+		}
+	}
+?>
+</div>
 </div>
 	<footer>
 		<h5>Created By : Jeremy LA @ 42</h5>
