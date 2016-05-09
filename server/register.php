@@ -23,7 +23,7 @@ if (!isset($_SESSION['login'])){
 	}
 	else{
 		$login	= htmlspecialchars($_POST['login']);
-		$mdp	= htmlspecialchars(hash('whirlpool', $_POST['password']));
+		$mdp	= htmlspecialchars(hash('whirlpool', $_POST['password']."camagru"));
 		$email =  htmlspecialchars($_POST['email']);
 		$headers = 'From: Admin<admin@camagru.42.fr>' . "\r\n" .
 			'Reply-To: <admin@camagru.42.fr>' . "\r\n" .

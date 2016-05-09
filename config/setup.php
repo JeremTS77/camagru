@@ -36,7 +36,7 @@ $pdo->exec($querry);
 $querry = "CREATE TABLE IF NOT EXISTS ".$DB_TABLE['users']."(id int(11) AUTO_INCREMENT PRIMARY KEY NOT NULL, login varchar(255) UNIQUE NOT NULL, email varchar(255) NOT NULL UNIQUE, mdp varchar(255) NOT NULL, reset varchar(255), confirm varchar(255), confirmed BOOLEAN NOT NULL DEFAULT 0);";
 $pdo->exec($querry);
 echo "Tables: ".$DB_TABLE['users']." created".PHP_EOL;
-$pdo->query("INSERT INTO ".$DB_TABLE['users']."(login, email, mdp, confirmed) VALUES('JeremDev', 'jeremy.la@me.com', '6a4e012bd9583858a5a6fa15f58bd86a25af266d3a4344f1ec2018b778f29ba83be86eb45e6dc204e11276f4a99eff4e2144fbe15e756c2c88e999649aae7d94', '1')");
+$pdo->query("INSERT INTO ".$DB_TABLE['users']."(login, email, mdp, confirmed) VALUES('JeremDev', 'jeremy.la@me.com', '94e7d58b3c41c45e989b960e75481f98f3b0d1a1780b866e4c4d16844f35fd968d6ead102c63c4d2e25e28cde7c13428e3c84547b31d70babce39a39ae7d885d', '1')");
 
 
 //creating pictures tables;

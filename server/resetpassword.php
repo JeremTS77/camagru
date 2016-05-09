@@ -13,7 +13,7 @@ if (!isset($_SESSION['login'])){
 	}
 
 	if (isset($_POST['reset'])){
-		$mdp	= htmlspecialchars(hash('whirlpool', $_POST['password']));
+		$mdp	= htmlspecialchars(hash('whirlpool', $_POST['password']."camagru"));
 		$salt = $_POST['reset'];
 		$stmt = $pdo->prepare("UPDATE " . $DB_TABLE['users']." SET mdp=:mdp where reset=:salt");
 		$stmt->bindValue(':mdp', $mdp);

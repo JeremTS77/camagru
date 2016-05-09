@@ -12,7 +12,7 @@ if (isset($_POST['login'])){
 		die($msg);
 	}
 	$login	= htmlspecialchars($_POST['login']);
-	$mdp	= htmlspecialchars(hash('whirlpool', $_POST['password']));
+	$mdp	= htmlspecialchars(hash('whirlpool', $_POST['password']."camagru"));
 	$stmt = $pdo->prepare("SELECT mdp FROM ".$DB_TABLE['users']." where login=:login and confirmed='1'");
 	$stmt->bindvalue(':login', $login, PDO::PARAM_STR);
 	$stmt->execute();
