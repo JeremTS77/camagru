@@ -20,6 +20,7 @@ if (isset($_SESSION['login'])){
 	if($check !== false) {
 		if (move_uploaded_file($_FILES["upload"]["tmp_name"], $target_file)) {
 			$dest = imagecreatefromjpeg($target_file);
+			unlink($target_file);
 		}
 
 	}
