@@ -12,24 +12,34 @@ if (isset($_SESSION['login'])){
 	}
 	$login	= htmlspecialchars($_POST['login']);
 
-	$target_dir = "uploads/";
-	$target_file = $target_dir . basename($_FILES["upload"]["name"]);
-	$uploadOk = 1;
-	$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-	$check = getimagesize($_FILES["upload"]["tmp_name"]);
-	if($check !== false) {
-		if (move_uploaded_file($_FILES["upload"]["tmp_name"], $target_file)) {
-			$dest = imagecreatefromjpeg($target_file);
-			unlink($target_file);
+	if (isset($_FILES["upload"]["name"]) && $_FILES["upload"]["size"] != 0){
+		$target_dir = "uploads/";
+		$target_file = $target_dir . basename($_FILES["upload"]["name"]);
+		$uploadOk = 1;
+		$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+		$check = getimagesize($_FILES["upload"]["tmp_name"]);
+		if($check !== false) {
+			if (move_uploaded_file($_FILES["upload"]["tmp_name"], $target_file)) {
+				$dest = imagecreatefromjpeg($target_file);
+				unlink($target_file);
+			}
+
+		}
+		else {
+			$img = $_POST['image'];
+			$img = str_replace('data:image/jpeg;base64,', '', $img);
+			$img = str_replace(' ', '+', $img);
+			$destim = base64_decode($img);
+			$dest = imagecreatefromstring($destim);
 		}
 
 	}
 	else {
-	$img = $_POST['image'];
-	$img = str_replace('data:image/jpeg;base64,', '', $img);
-	$img = str_replace(' ', '+', $img);
-	$destim = base64_decode($img);
-	$dest = imagecreatefromstring($destim);
+		$img = $_POST['image'];
+		$img = str_replace('data:image/jpeg;base64,', '', $img);
+		$img = str_replace(' ', '+', $img);
+		$destim = base64_decode($img);
+		$dest = imagecreatefromstring($destim);
 	}
 	$image = imagecreatefrompng("../client/images/".$_POST['clip'].".png");
 

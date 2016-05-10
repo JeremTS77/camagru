@@ -24,16 +24,16 @@ if(!isset($_SESSION['login'])){
 		<h2 class="PageTitle">Reset Password</h2>
 
 		<form name="resetlast" action="/server/resetpassword.php" method="post" accept-charset="utf-8">
-			<input name="reset" value="<?php echo $_GET['reset']; ?>"/>
-			<div class="password">
+			<input name="reset" value="<?php echo $_GET['reset']; ?>" hidden/>
+			<div class="input">
 				<label for="password">Password</label>
 				<input id="normalpass" type="password" name="password" placeholder="password" onkeyup="verifpass();" required>
 			</div>
-			<div class="password">
+			<div class="input">
 				<label for="confpassword">Confirm</label>
 				<input id="repeatpass" type="password" name="confpassword" placeholder="repeat password" onkeyup="verifpass();" required>
 			</div>
-			<input type="submit" value="Login" id="SignupButton" disabled/>
+			<button type="submit" value="Login" id="SignupButton" disabled  class="FormButton">Login</button>
 		</form>
 
 	<footer>
